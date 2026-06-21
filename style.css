@@ -1420,8 +1420,13 @@ footer p{
 @media(max-width:768px){
 
     .hero-content{
-        flex-direction:column;
-    }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
 
     .hero-right{
         display:none;
@@ -1505,9 +1510,13 @@ footer p{
     
 
     .hero-content{
-        flex-direction:column !important;
-        text-align:center !important;
-    }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
 
     .metal-title{
         font-size:2.3rem !important;
@@ -1941,6 +1950,25 @@ nav a:hover{
     gap:30px;
 }
 
+
+@media(min-width:1024px){
+
+    .ece-grid{
+
+        grid-template-columns:
+        repeat(5,1fr) !important;
+
+        gap:20px;
+    }
+
+    .ece-card{
+
+        min-height:320px;
+
+        padding:25px;
+    }
+
+}
 .ece-card{
 
     background:rgba(255,255,255,0.85);
@@ -3048,8 +3076,13 @@ footer p{
 @media(max-width:768px){
 
     .hero-content{
-        flex-direction:column;
-    }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
 
     .hero-right{
         display:none;
@@ -3133,9 +3166,13 @@ footer p{
     
 
     .hero-content{
-        flex-direction:column !important;
-        text-align:center !important;
-    }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
 
     .metal-title{
         font-size:2.3rem !important;
@@ -3378,3 +3415,302 @@ nav ul li a:hover{
 }
 
 }
+/* LIGHT CIRCUIT THEME FIX */
+
+body{
+    background:#f8fbff !important;
+    color:#0f172a !important;
+}
+
+.background{
+    background:
+    radial-gradient(circle at top left,
+    rgba(0,200,255,.15),
+    transparent 35%),
+
+    radial-gradient(circle at bottom right,
+    rgba(120,100,255,.15),
+    transparent 35%),
+
+    #f8fbff !important;
+}
+
+.background::before{
+    background-image:
+    linear-gradient(
+        rgba(0,150,255,.04) 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        rgba(0,150,255,.04) 1px,
+        transparent 1px
+    ) !important;
+
+    background-size:120px 120px !important;
+
+    opacity:1 !important;
+}
+
+.logo,
+nav a,
+h1,
+h2,
+h3,
+h4{
+    color:#0f172a !important;
+}
+
+.hero p,
+.section-title p,
+.ece-card p,
+.career-card p,
+.future-card p,
+footer p{
+    color:#475569 !important;
+}
+
+.metal-title{
+    background:none !important;
+    color:#0f172a !important;
+    -webkit-text-fill-color:#0f172a !important;
+}
+
+nav,
+.ece-card,
+.stat-card,
+.career-card,
+.future-card,
+.roadmap-card,
+.team-card,
+.info-card,
+.quiz-card{
+    background:rgba(255,255,255,.92) !important;
+    border:1px solid rgba(0,150,255,.12) !important;
+    box-shadow:0 8px 30px rgba(0,0,0,.06) !important;
+}
+
+.secondary-btn{
+    color:#0f172a !important;
+    border:1px solid rgba(0,150,255,.2) !important;
+}
+
+/* FINAL CIRCUIT BACKGROUND */
+
+.background::before{
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    inset:0 !important;
+
+    background:
+
+    linear-gradient(
+        rgba(0,150,255,.03) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(0,150,255,.03) 1px,
+        transparent 1px
+    ),
+
+    radial-gradient(
+        circle at 20% 30%,
+        rgba(0,200,255,.10) 0,
+        rgba(0,200,255,.10) 4px,
+        transparent 5px
+    ),
+
+    radial-gradient(
+        circle at 70% 60%,
+        rgba(120,100,255,.10) 0,
+        rgba(120,100,255,.10) 4px,
+        transparent 5px
+    ) !important;
+
+    background-size:
+    140px 140px,
+    140px 140px,
+    220px 220px,
+    260px 260px !important;
+
+    opacity:1 !important;
+}
+
+.ece-card,
+.stat-card,
+.career-card,
+.future-card,
+.roadmap-card,
+.team-card{
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,.75) !important;
+}
+
+/* FINAL HERO TITLE */
+
+.metal-title{
+
+    background:none !important;
+
+    color:#14213d !important;
+
+    -webkit-text-fill-color:#14213d !important;
+
+    font-weight:700 !important;
+
+    text-shadow:none !important;
+}
+
+/* REAL CIRCUIT BACKGROUND */
+
+body{
+
+    background:#f8fbff !important;
+
+    overflow-x:hidden;
+}
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    url("assets/images/circuit-bg.png")
+    center center / cover
+    no-repeat !important;
+
+    opacity:0.18;
+
+    z-index:-2;
+}
+
+.background::before,
+.background::after,
+.circuit-overlay{
+
+    display:none !important;
+}
+
+.background{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        rgba(230,245,255,0.75),
+        rgba(230,245,255,0.75)
+    ),
+    url("assets/images/circuit-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    z-index:-2;
+}
+
+.ece-card,
+.career-card,
+.future-card,
+.stat-card,
+.team-card,
+.roadmap-card{
+
+    background:rgba(255,255,255,0.92) !important;
+
+    backdrop-filter:blur(20px);
+
+    border:none !important;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08) !important;
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    top:20%;
+
+    left:-150px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,200,255,.18),
+        transparent 70%
+    );
+
+    filter:blur(80px);
+
+    pointer-events:none;
+}
+
+.metal-title{
+
+    color:#0f172a !important;
+
+    -webkit-text-fill-color:#0f172a !important;
+
+    font-weight:700 !important;
+
+    background:none !important;
+}
+
+.hero-left{
+    width:100%;
+}
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+    width:100%;
+}
+
+.about-card{
+    width:100%;
+}
+
+.about-hero,
+.hero-section,
+.page-header{
+
+    padding-top:140px !important;
+}
+
+.feature-card,
+.about-card{
+
+    min-height:auto !important;
+
+    padding:30px !important;
+}
+
