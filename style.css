@@ -283,7 +283,7 @@ nav a:hover{
 
 .ece-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
 }
 
@@ -1921,25 +1921,6 @@ nav a:hover{
     gap:30px;
 }
 
-
-@media(min-width:1024px){
-
-    .ece-grid{
-
-        grid-template-columns:
-        repeat(5,1fr) !important;
-
-        gap:20px;
-    }
-
-    .ece-card{
-
-        min-height:320px;
-
-        padding:25px;
-    }
-
-}
 .ece-card{
 
     background:rgba(255,255,255,0.85);
@@ -4002,6 +3983,118 @@ input[type="radio"]{
 
     body{
 
+        overflow-x:hidden !important;
+    }
+}
+
+@media(max-width:768px){
+
+    .ece-grid,
+    .project-grid,
+    .activities-grid{
+
+        grid-template-columns:1fr !important;
+    }
+
+    .ece-card{
+
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+    }
+
+    html,
+    body{
+
+        overflow-x:hidden !important;
+    }
+}
+
+/* FINAL MOBILE FIX */
+
+@media screen and (max-width:768px){
+
+    .ece-grid{
+
+        display:grid !important;
+
+        grid-template-columns:1fr !important;
+
+        gap:20px !important;
+    }
+
+    .ece-card{
+
+        width:100% !important;
+
+        max-width:100% !important;
+
+        min-width:0 !important;
+    }
+
+    .project-grid,
+    .activities-grid{
+
+        grid-template-columns:1fr !important;
+    }
+
+    body,
+    html{
+
+        overflow-x:hidden !important;
+
+        width:100% !important;
+    }
+
+    *{
+
+        max-width:100%;
+    }
+}
+@media(max-width:768px){
+
+    .ece-grid,
+    .project-grid,
+    .activities-grid{
+
+        grid-template-columns:1fr !important;
+    }
+
+    .ece-card{
+
+        width:100% !important;
+        max-width:100% !important;
+        min-width:0 !important;
+    }
+
+    html,
+    body{
+
+        overflow-x:hidden !important;
+    }
+}
+
+/* EMERGENCY MOBILE FIX */
+
+@media (max-width:768px){
+
+    *{
+        max-width:100vw !important;
+    }
+
+    .ece-grid{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+    }
+
+    .ece-card{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+    }
+
+    body,
+    html{
         overflow-x:hidden !important;
     }
 }
