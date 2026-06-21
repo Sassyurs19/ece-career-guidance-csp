@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECE Explorer</title>
+    <title>ECE Career Explorer</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -17,45 +17,46 @@
     <div class="background"></div>
     <div class="circuit-overlay"></div>
 
+    <div class="floating-icon">📡</div>
+    <div class="floating-icon">🛰️</div>
+    <div class="floating-icon">🤖</div>
+    <div class="floating-icon">💻</div>
+
     <!-- Navbar -->
     <nav>
 
     <div class="logo">
-        ECE Explorer
+        ECE Career Explorer
     </div>
 
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
 
+    <ul id="nav-links">
 
-    <ul>
-
-        <li><a href="#">Home</a></li>
-
-        <li><a href="#about-ece">
-            About ECE
-        </a></li>
-
-        <li><a href="#roadmap">
-            Roadmap
-        </a></li>
-
-        <li><a href="#careers">
-            Careers
-        </a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-ece">About ECE</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#careers">Careers</a></li>
 
     </ul>
 
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
+
+        <div class="hero-left">
+
             <div class="hero-tag">
                 CAREER GUIDANCE PLATFORM
             </div>
-            
+
             <h1 class="metal-title">
-                ECE Explorer
+                ECE CAREER EXPLORER
             </h1>
 
             <p>
@@ -66,25 +67,27 @@
 
             <div class="buttons">
 
-    <button
-        class="primary-btn"
-        onclick="document.getElementById('about-ece').scrollIntoView({behavior:'smooth'})">
+                <a href="#about-ece" class="primary-btn">
+                    Start Exploring
+                </a>
 
-        Start Exploring
+                <a href="#roadmap" class="secondary-btn">
+                    Career Roadmap
+                </a>
 
-    </button>
-
-    <button
-        class="secondary-btn"
-        onclick="document.getElementById('roadmap').scrollIntoView({behavior:'smooth'})">
-
-        Career Roadmap
-
-    </button>
-
-</div>
+            </div>
 
         </div>
+
+        <div class="hero-right">
+
+
+
+    <img src="assets/images/chip.png" alt="ECE Chip">
+
+        </div>
+
+    </div>
 
     </section>
 
@@ -442,7 +445,7 @@
 
 <!-- About Project Section -->
 
-<section class="about-project-section">
+<section id="about" class="about-section">
 
     <div class="section-title">
 
@@ -734,21 +737,18 @@
 
 </section>
 
+
 <!-- Footer -->
 
-<footer>
+<footer class="footer">
 
-    <h3>ECE Explorer</h3>
+    <h3>ECE Career Explorer</h3>
 
     <p>Community Service Project</p>
 
     <p>
         Department of Electronics &
         Communication Engineering
-
-
-        Developed as part of the Community Service Project (CSP)
-        by ECE Students.
     </p>
 
     <p>
