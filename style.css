@@ -3691,45 +3691,63 @@ body{
         z-index:9999;
     }
 
-    nav{
-
-        flex-direction:row !important;
-
-        justify-content:space-between !important;
-
-        align-items:center !important;
-    }
-
     #nav-links{
 
-        display:none;
+    display:none;
 
-        position:absolute;
+    position:absolute;
 
-        top:80px;
+    top:85px;
 
-        left:10px;
+    right:15px;
 
-        right:10px;
+    width:220px;
 
-        background:white;
+    background:white;
 
-        border-radius:20px;
+    border-radius:20px;
 
-        padding:20px;
+    padding:15px;
 
-        flex-direction:column;
+    flex-direction:column;
 
-        gap:15px;
+    gap:12px;
 
-        box-shadow:
-        0 10px 30px rgba(0,0,0,.1);
-    }
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.15);
 
-    #nav-links.active{
+    z-index:9999;
+}
 
-        display:flex;
-    }
+#nav-links.active{
+
+    display:flex;
+}
+
+#nav-links li{
+
+    list-style:none;
+}
+
+#nav-links li a{
+
+    display:block;
+
+    padding:12px 15px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:#0f172a;
+
+    font-weight:500;
+}
+
+#nav-links li a:hover{
+
+    background:#e0f2fe;
+}
 }
 .roadmap-card h3,
 .timeline-card h3,
