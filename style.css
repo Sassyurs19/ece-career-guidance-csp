@@ -3838,3 +3838,9 @@ body{
     }
 
 }
+
+.menu-toggle{
+    color:red !important;
+    font-size:40px !important;
+    display:block !important;
+}
