@@ -1,4 +1,4 @@
-console.log("ECE Career Explorer Loaded");
+console.log("ECE Explorer Loaded");
 
 function checkQuiz(){
 
@@ -18,20 +18,17 @@ function checkQuiz(){
 
         result.innerHTML =
         "🌟 Excellent! Score: 5/5";
-
     }
 
     else if(score >= 3){
 
         result.innerHTML =
         "🚀 Great Job! Score: " + score + "/5";
-
     }
 
     else{
 
         result.innerHTML =
         "📚 Nice Try! Score: " + score + "/5";
-
     }
 }
