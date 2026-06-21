@@ -3859,3 +3859,50 @@ input[type="radio"]{
     }
 
 }
+/* MOBILE PROJECT PAGE FIX */
+
+@media (max-width: 768px) {
+
+    .project-grid,
+    .activities-grid,
+    .ece-grid {
+
+        grid-template-columns: 1fr !important;
+
+        gap: 20px !important;
+    }
+
+    .ece-card {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-height: auto !important;
+
+        padding: 20px !important;
+    }
+
+    .ece-card h3 {
+
+        font-size: 1.4rem !important;
+    }
+
+    .ece-card p {
+
+        font-size: 1rem !important;
+
+        line-height: 1.6 !important;
+    }
+}
+@media (max-width: 768px) {
+
+    .team-grid {
+
+        display: grid !important;
+
+        grid-template-columns: repeat(2, 1fr) !important;
+
+        gap: 15px !important;
+    }
+}
