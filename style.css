@@ -282,18 +282,16 @@ nav a:hover{
 }
 
 .ece-card{
-
     background:rgba(255,255,255,0.05);
-
     backdrop-filter:blur(15px);
-
     border:1px solid rgba(255,255,255,0.08);
-
     border-radius:25px;
-
     padding:28px;
 
-    min-height:260px;
+    min-height:160px;
+
+    display:flex;
+    flex-direction:column;
 
     transition:0.4s ease;
 }
@@ -329,6 +327,23 @@ nav a:hover{
     color:#cfcfcf;
 
     line-height:1.7;
+}
+
+.ece-card a{
+    margin-top:auto;
+    display:inline-block;
+    color:#00d4ff;
+    text-decoration:none;
+    font-weight:600;
+    padding:10px 20px;
+    border:1px solid #00d4ff;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.ece-card a:hover{
+    background:#00d4ff;
+    color:#000;
 }
 .stat-card span{
 
@@ -1932,22 +1947,11 @@ nav a:hover{
 
     padding:28px;
 
-    min-height:260px;
+    min-height:160px;
 
     transition:0.4s ease;
 }
 
-.ece-card:hover{
-
-    transform:
-    translateY(-10px);
-
-    box-shadow:
-    0 0 30px rgba(0,212,255,0.2);
-
-    border-color:
-    rgba(0,212,255,0.4);
-}
 
 .icon{
 
@@ -3262,4 +3266,11 @@ nav ul li a:hover{
     color:#00d4ff;
 }
 
+.active{
+    color:#00d4ff !important;
+    font-weight:600;
+}
 
+.ece-section{
+    padding-top:120px;
+}
