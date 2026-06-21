@@ -1,4 +1,12 @@
-console.log("ECE Explorer Loaded");
+console.log("ECE Career Explorer Loaded");
+
+function toggleMenu(){
+
+    document
+    .getElementById("nav-links")
+    .classList
+    .toggle("active");
+}
 
 function checkQuiz(){
 
