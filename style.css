@@ -497,7 +497,7 @@ html{
 }
 
 .roadmap-card p{
-    color:#cfcfcf;
+    color:#475569 !important;
     line-height:1.8;
 }
 
@@ -2124,7 +2124,7 @@ html{
 }
 
 .roadmap-card p{
-    color:#cfcfcf;
+    color:#475569 !important;
     line-height:1.8;
 }
 
@@ -3748,4 +3748,114 @@ body{
 
         display:flex;
     }
+}
+.roadmap-card h3,
+.timeline-card h3,
+.roadmap-step h3{
+
+    color:#0f172a !important;
+}
+
+/* QUIZ OPTION TEXT FIX */
+
+.quiz-card label,
+.quiz-container label,
+.question label,
+.quiz-question label{
+
+    color:#334155 !important;
+
+    font-weight:500 !important;
+
+    opacity:1 !important;
+}
+
+input[type="radio"]{
+    opacity:1 !important;
+}
+/* FULL WIDTH CARD LAYOUT */
+
+.ece-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr)) !important;
+
+    gap:25px !important;
+
+    width:100% !important;
+}
+
+.ece-card{
+
+    width:100% !important;
+
+    max-width:none !important;
+}
+
+.project-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(4,1fr) !important;
+
+    gap:25px !important;
+
+    width:100% !important;
+}
+.activities-grid{
+
+    display:grid !important;
+
+    grid-template-columns:repeat(4,1fr) !important;
+
+    gap:25px !important;
+
+    width:100% !important;
+}
+@media(min-width:1024px){
+
+    .project-grid{
+
+        display:grid !important;
+
+        grid-template-columns:repeat(4,1fr) !important;
+
+        gap:20px !important;
+    }
+
+}
+@media(min-width:1024px){
+
+    .activities-grid{
+
+        display:grid !important;
+
+        grid-template-columns:repeat(4,1fr) !important;
+
+        gap:20px !important;
+    }
+
+}
+
+@media(min-width:1024px){
+
+    .project-grid{
+
+        display:grid !important;
+
+        grid-template-columns:repeat(4,1fr) !important;
+
+        gap:20px !important;
+    }
+
+    .activities-grid{
+
+        display:grid !important;
+
+        grid-template-columns:repeat(4,1fr) !important;
+
+        gap:20px !important;
+    }
+
 }
