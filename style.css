@@ -2741,6 +2741,10 @@ footer p{
 
     nav{
 
+        top:0 !important;
+
+        margin-top:0 !important;
+
         width:95% !important;
 
         left:50% !important;
@@ -2763,7 +2767,7 @@ footer p{
 
     nav ul{
 
-        display:flex !important;
+        display:none;
 
         justify-content:center !important;
 
@@ -4155,24 +4159,3 @@ nav{
     margin-top:0 !important;
 }
 
-@media(max-width:768px){
-
-    nav{
-
-        top:0 !important;
-        margin:0 !important;
-        margin-top:0 !important;
-        transform:translateX(-50%) !important;
-    }
-
-    body{
-
-        padding-top:0 !important;
-        margin-top:0 !important;
-    }
-
-    html{
-
-        margin-top:0 !important;
-    }
-}
