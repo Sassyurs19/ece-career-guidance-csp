@@ -4489,17 +4489,15 @@ nav{
 
 .logo{
 
-    display:flex !important;
+    text-align:center;
 
-    align-items:center !important;
+    font-size:clamp(.8rem,3vw,1rem);
 
-    justify-content:center !important;
+    white-space:nowrap;
 
-    gap:8px !important;
+    overflow:hidden;
 
-    font-size:.95rem !important;
-
-    white-space:nowrap !important;
+    text-overflow:ellipsis;
 }
 
 .logo span{
@@ -4515,11 +4513,11 @@ nav{
 
     display:grid !important;
 
-    grid-template-columns:auto 1fr auto;
+    grid-template-columns:50px 1fr 50px;
 
     align-items:center;
 
-    gap:10px;
+    width:95% !important;
 }
 
 .menu-toggle{
@@ -4537,4 +4535,14 @@ nav{
 .project-grid{
 
     margin-top:40px;
+}
+
+.home-icon{
+
+    justify-self:start;
+}
+
+.menu-toggle{
+
+    justify-self:end;
 }
