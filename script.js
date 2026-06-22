@@ -51,3 +51,100 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".fade-in")
 .forEach((el) => observer.observe(el));
+const messages = [
+
+    "Initializing CRO...",
+
+    "Loading Circuit Components...",
+
+    "Analyzing Signals...",
+
+    "Starting Communication Systems...",
+
+    "Launching ECE Explorer..."
+];
+
+let index = 0;
+
+const text = document.getElementById("loading-text");
+
+const interval = setInterval(() => {
+
+    index++;
+
+    if(index < messages.length){
+
+        text.textContent = messages[index];
+    }
+
+}, 300);
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        clearInterval(interval);
+
+        document.getElementById("loader").style.display = "none";
+
+    }, 1800);
+
+});
+
+/* CRO LOADING SCREEN */
+
+const messages = [
+
+    "Initializing CRO...",
+
+    "Loading Circuit Components...",
+
+    "Analyzing Signals...",
+
+    "Starting Communication Systems...",
+
+    "Launching ECE Explorer..."
+
+];
+
+window.addEventListener("load", () => {
+
+    const text = document.getElementById("loading-text");
+
+    const loader = document.getElementById("loader");
+
+    if(text && loader){
+
+        let index = 0;
+
+        const interval = setInterval(() => {
+
+            index++;
+
+            if(index < messages.length){
+
+                text.textContent = messages[index];
+
+            }
+
+        }, 300);
+
+        setTimeout(() => {
+
+            clearInterval(interval);
+
+            loader.style.opacity = "0";
+
+            loader.style.transition = "0.5s";
+
+            setTimeout(() => {
+
+                loader.style.display = "none";
+
+            }, 500);
+
+        }, 2000);
+
+    }
+
+});
