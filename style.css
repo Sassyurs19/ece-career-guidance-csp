@@ -1696,9 +1696,48 @@ nav{
 }
 
 .logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
     font-family:'Orbitron',sans-serif;
+
     font-size:1.2rem;
+
     font-weight:700;
+}
+
+.home-icon{
+
+    text-decoration:none;
+
+    font-size:1.2rem;
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(0,212,255,.08);
+
+    transition:.3s;
+}
+
+.home-icon:hover{
+
+    background:rgba(0,212,255,.15);
+
+    transform:scale(1.05);
 }
 
 #nav-links{
