@@ -20,6 +20,9 @@ body{
     color:#0f172a;
 
     overflow-x:hidden;
+
+    margin:0;
+    padding:0;
 }
 
 .background{
@@ -34,7 +37,7 @@ body{
 
 nav{
     position:fixed;
-    top:20px;
+    top:0;
     left:50%;
     transform:translateX(-50%);
 
@@ -4137,3 +4140,17 @@ input[type="radio"]{
     }
 }
 
+html,
+body{
+    margin:0 !important;
+    padding:0 !important;
+}
+
+nav{
+    margin-top:0 !important;
+}
+
+.hero,
+.hero-section{
+    margin-top:0 !important;
+}
