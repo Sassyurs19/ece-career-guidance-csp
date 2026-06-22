@@ -1712,22 +1712,36 @@ nav{
 
 .home-icon{
 
-    width:30px;
+    width:42px;
 
-    height:30px;
+    height:42px;
 
-    font-size:14px;
+    display:flex;
 
-    border-radius:8px;
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:rgba(0,212,255,.10);
+
+    color:#0f172a;
+
+    font-size:18px;
+
+    text-decoration:none;
+
+    transition:.3s ease;
 
     flex-shrink:0;
 }
 
 .home-icon:hover{
 
-    background:rgba(0,212,255,.15);
+    background:rgba(0,212,255,.20);
 
-    transform:scale(1.05);
+    transform:translateY(-2px);
 }
 
 #nav-links{
@@ -3941,6 +3955,14 @@ input[type="radio"]{
         gap:20px !important;
     }
 
+    .home-icon{
+
+    width:48px !important;
+
+    height:48px !important;
+
+    font-size:22px !important;
+}
 }
 /* MOBILE PROJECT PAGE FIX */
 
