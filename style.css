@@ -4231,13 +4231,31 @@ nav{
 
     stroke:#00bfff;
 
-    stroke-width:3;
+    stroke-width:4;
 
     stroke-linecap:round;
 
-    filter:drop-shadow(0 0 4px rgba(0,191,255,.5));
+    filter:drop-shadow(0 0 8px rgba(0,191,255,.8));
 
-    animation:pulseWave 1s infinite;
+    stroke-dasharray:1200;
+
+    stroke-dashoffset:1200;
+
+    animation:waveMove 2s linear infinite;
+}
+
+@keyframes waveMove{
+
+    from{
+
+        stroke-dashoffset:1200;
+    }
+
+    to{
+
+        stroke-dashoffset:0;
+    }
+
 }
 
 @keyframes pulseWave{
