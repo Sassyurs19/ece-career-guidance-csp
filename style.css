@@ -91,12 +91,12 @@ nav a:hover{
 
 .hero{
     min-height:60vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:20px;
+
+    padding:120px 20px 20px 20px;
 }
 
 .hero h1{
@@ -1725,12 +1725,12 @@ nav a:hover{
 
 .hero{
     min-height:60vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:20px;
+
+    padding:120px 20px 20px 20px;
 }
 
 .hero h1{
@@ -4159,3 +4159,11 @@ nav{
     margin-top:0 !important;
 }
 
+
+@media(min-width:769px){
+
+    body{
+        padding-top:100px;
+    }
+
+}
