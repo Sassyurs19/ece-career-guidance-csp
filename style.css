@@ -4154,3 +4154,25 @@ nav{
 .hero-section{
     margin-top:0 !important;
 }
+
+@media(max-width:768px){
+
+    nav{
+
+        top:0 !important;
+        margin:0 !important;
+        margin-top:0 !important;
+        transform:translateX(-50%) !important;
+    }
+
+    body{
+
+        padding-top:0 !important;
+        margin-top:0 !important;
+    }
+
+    html{
+
+        margin-top:0 !important;
+    }
+}
