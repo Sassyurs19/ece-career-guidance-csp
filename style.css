@@ -1712,27 +1712,15 @@ nav{
 
 .home-icon{
 
-    text-decoration:none;
+    width:30px;
 
-    width:34px;
-
-    height:34px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:10px;
-
-    background:rgba(0,212,255,.08);
-
-    color:#0f172a;
+    height:30px;
 
     font-size:14px;
 
-    transition:.3s;
+    border-radius:8px;
+
+    flex-shrink:0;
 }
 
 .home-icon:hover{
@@ -4027,7 +4015,9 @@ input[type="radio"]{
 }
 
     .logo{
-
+        display:flex;
+        align-items:center;
+        gap:8px;
         font-size:1.2rem !important;
     }
 
@@ -4418,6 +4408,20 @@ nav{
 
         font-size:13px;
     }
+    
+    nav{
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:space-between !important;
+
+    padding:12px 15px !important;
+
+    min-height:60px !important;
+}
+
 }
 
 .loading-percent{
@@ -4435,3 +4439,15 @@ nav{
     font-family:'Orbitron',sans-serif;
 }
 
+@media(max-width:768px){
+
+    .logo span{
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+
+        white-space:nowrap;
+    }
+
+}
