@@ -80,45 +80,45 @@ window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
     const text = document.getElementById("loading-text");
 
-    if(!loader || !text) return;
+    if (!loader || !text) return;
 
     const messages = [
-
         "Initializing CRO...",
         "Loading Circuit Components...",
         "Analyzing Signals...",
         "Starting Communication Systems...",
         "Launching ECE Explorer..."
-
     ];
 
     let index = 0;
 
     const interval = setInterval(() => {
 
+        text.textContent = messages[index];
+
         index++;
 
-        if(index < messages.length){
+        if(index >= messages.length){
 
-            text.textContent = messages[index];
+            clearInterval(interval);
 
         }
 
-    }, 350);
+    }, 400);
 
     setTimeout(() => {
 
-        clearInterval(interval);
-
         loader.style.opacity = "0";
+
+        loader.style.transition = "opacity 0.8s ease";
 
         setTimeout(() => {
 
             loader.remove();
 
-        }, 500);
+        }, 800);
 
-    }, 2200);
+    }, 2500);
 
 });
 
