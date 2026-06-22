@@ -3949,10 +3949,10 @@ input[type="radio"]{
 
     nav{
 
-        width:95% !important;
-        margin:15px auto !important;
-        padding:15px 20px !important;
-    }
+    width:95% !important;
+    margin:0 auto !important;
+    padding:15px 20px !important;
+}
 
     .logo{
 
