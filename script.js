@@ -73,44 +73,79 @@ document
     .querySelectorAll(".fade-in")
     .forEach((el) => observer.observe(el));
 
-/* CRO LOADER */
+/* ADVANCED CRO LOADER */
 
 window.addEventListener("load", () => {
 
-    const loader = document.getElementById("loader");
-    const text = document.getElementById("loading-text");
+    const loader =
+        document.getElementById("loader");
+
+    const text =
+        document.getElementById("loading-text");
+
+    const percentElement =
+        document.querySelector(".loading-percent");
 
     if (!loader || !text) return;
 
     const messages = [
-        "Initializing CRO...",
-        "Loading Circuit Components...",
-        "Analyzing Signals...",
-        "Starting Communication Systems...",
-        "Launching ECE Explorer..."
-    ];
+
+    "Booting CRO...",
+
+    "Scanning Communication Channels...",
+
+    "Analyzing Signals...",
+
+    "Loading ECE Pathways...",
+
+    "Launching Explorer..."
+
+];
 
     let index = 0;
 
-    const interval = setInterval(() => {
+    let percent = 0;
 
-        text.textContent = messages[index];
+    const messageInterval = setInterval(() => {
 
-        index++;
+        if(index < messages.length){
 
-        if(index >= messages.length){
+            text.textContent =
+                messages[index];
 
-            clearInterval(interval);
+            index++;
 
         }
 
-    }, 400);
+    }, 500);
+
+    const percentInterval = setInterval(() => {
+
+        percent += 4;
+
+        if(percentElement){
+
+            percentElement.textContent =
+                percent + "%";
+
+        }
+
+        if(percent >= 100){
+
+            clearInterval(percentInterval);
+
+        }
+
+    }, 80);
 
     setTimeout(() => {
 
+        clearInterval(messageInterval);
+
         loader.style.opacity = "0";
 
-        loader.style.transition = "opacity 0.8s ease";
+        loader.style.transition =
+            "opacity 0.8s ease";
 
         setTimeout(() => {
 

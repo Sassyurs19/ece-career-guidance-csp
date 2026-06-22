@@ -4186,6 +4186,7 @@ nav{
     align-items:center;
 
     z-index:999999;
+    transition:opacity .8s ease;
 }
 
 .cro-screen{
@@ -4220,9 +4221,11 @@ nav{
 
 .cro-wave{
 
-    width:100%;
+    width:75%;
 
-    height:50px;
+    height:45px;
+
+    margin:0 auto;
 }
 
 .cro-wave path{
@@ -4235,7 +4238,7 @@ nav{
 
     stroke-linecap:round;
 
-    filter:drop-shadow(0 0 8px rgba(0,191,255,.8));
+    filter:drop-shadow(0 0 12px rgba(0,191,255,.7));
 
     stroke-dasharray:1200;
 
@@ -4311,3 +4314,19 @@ nav{
         font-size:13px;
     }
 }
+
+.loading-percent{
+
+    margin-top:10px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#00bfff;
+
+    text-shadow:0 0 10px rgba(0,191,255,.3);
+
+    font-family:'Orbitron',sans-serif;
+}
+
