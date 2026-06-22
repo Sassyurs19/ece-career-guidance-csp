@@ -1712,9 +1712,9 @@ nav{
 
 .home-icon{
 
-    width:42px;
+    width:36px;
 
-    height:42px;
+    height:36px;
 
     display:flex;
 
@@ -1722,17 +1722,15 @@ nav{
 
     justify-content:center;
 
-    border-radius:12px;
+    border-radius:10px;
 
-    background:rgba(0,212,255,.10);
+    background:rgba(0,212,255,.08);
 
     color:#0f172a;
 
-    font-size:18px;
+    font-size:16px;
 
     text-decoration:none;
-
-    transition:.3s ease;
 
     flex-shrink:0;
 }
@@ -3288,7 +3286,9 @@ nav ul li a:hover{
 }
 
 .ece-section{
-    padding-top:40px;
+
+    padding-top:120px;
+
 }
 
 .card-btn{
@@ -3395,7 +3395,7 @@ nav ul li a:hover{
     }
 
     .hero{
-        min-height:80vh;
+        min-height:65vh;
     }
 
     .metal-title{
@@ -4037,11 +4037,21 @@ input[type="radio"]{
 }
 
     .logo{
-        display:flex;
-        align-items:center;
-        gap:8px;
-        font-size:1.2rem !important;
-    }
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    white-space:nowrap;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:700;
+}
 
     .hero-content{
 
@@ -4472,4 +4482,15 @@ nav{
         white-space:nowrap;
     }
 
+}
+
+
+#about-ece{
+
+    padding-top:120px !important;
+}
+
+.project-grid{
+
+    margin-top:40px;
 }
