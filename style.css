@@ -48,7 +48,7 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    padding:18px 35px;
+    padding:12px 16px !important;
 
     background:rgba(255,255,255,0.9);
 
@@ -1046,64 +1046,6 @@ footer p{
     }
 }
 
-/* SIMPLE MOBILE NAVBAR */
-
-@media (max-width:768px){
-
-    
-
-    nav{
-
-        width:calc(100% - 20px);
-
-        left:10px;
-        right:10px;
-
-        padding:15px;
-
-        display:flex;
-        flex-direction:column;
-
-        align-items:center;
-
-        gap:10px;
-    }
-
-    .logo{
-
-        display:block !important;
-
-        font-size:1rem;
-
-        max-width:none;
-
-        text-align:center;
-    }
-
-    nav ul{
-
-        display:flex !important;
-
-        position:static !important;
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-        gap:12px;
-
-        background:none !important;
-
-        padding:0 !important;
-
-        width:auto !important;
-    }
-
-    nav ul li a{
-
-        font-size:0.9rem;
-    }
-}
 
 @media (max-width:768px){
 
@@ -1475,31 +1417,6 @@ footer p{
     background:rgba(0,0,0,.15);
 }
 
-/* FINAL MOBILE FIX */
-
-@media(max-width:768px){
-
-    nav{
-        width:95% !important;
-        padding:15px !important;
-        flex-direction:column !important;
-        gap:12px !important;
-    }
-
-    .logo{
-        width:100%;
-        text-align:center;
-        font-size:1rem !important;
-    }
-
-    nav ul{
-        display:flex !important;
-        justify-content:center !important;
-        flex-wrap:wrap !important;
-        gap:10px !important;
-        position:static !important;
-        background:none !important;
-    }
 
     
 
@@ -1535,93 +1452,8 @@ footer p{
     .roadmap-branches{
         grid-template-columns:1fr !important;
     }
-}
-
-/* HAMBURGER MOBILE MENU */
 
 
-
-@media(max-width:768px){
-
-    
-
-    nav{
-
-        flex-direction:row !important;
-
-        justify-content:space-between !important;
-
-        align-items:center !important;
-    }
-
-    #nav-links{
-
-        display:none;
-
-        position:absolute;
-
-        top:80px;
-
-        left:10px;
-
-        right:10px;
-
-        flex-direction:column;
-
-        background:#081126;
-
-        border-radius:20px;
-
-        padding:20px;
-
-        text-align:center;
-
-        gap:20px;
-    }
-
-    #nav-links.active{
-
-        display:flex;
-    }
-}
-/* FINAL MOBILE NAVBAR */
-
-@media(max-width:768px){
-
-    #nav-links{
-
-        display:none !important;
-
-        position:absolute;
-
-        top:80px;
-
-        left:10px;
-
-        right:10px;
-
-        background:#081126;
-
-        border-radius:20px;
-
-        padding:20px;
-
-        flex-direction:column;
-
-        text-align:center;
-
-        gap:20px;
-
-        z-index:999;
-    }
-
-    #nav-links.active{
-
-        display:flex !important;
-    }
-
-    
-}
 
 nav ul li a:hover{
     color:#00d4ff;
@@ -1682,7 +1514,7 @@ nav{
     justify-content:space-between;
     align-items:center;
 
-    padding:18px 35px;
+    padding:12px 16px !important;
 
     background:rgba(255,255,255,0.85);
 
@@ -1703,7 +1535,7 @@ nav{
 
     font-family:'Orbitron',sans-serif;
 
-    font-size:0.95rem !important;
+    font-size:1.05rem !important;
 
     gap:10px !important;
 
@@ -3128,33 +2960,6 @@ footer p{
     background:rgba(0,0,0,.15);
 }
 
-/* FINAL MOBILE FIX */
-
-@media(max-width:768px){
-
-    nav{
-        width:95% !important;
-        padding:15px !important;
-        flex-direction:column !important;
-        gap:12px !important;
-    }
-
-    .logo{
-        width:100%;
-        text-align:center;
-        font-size:1rem !important;
-    }
-
-    nav ul{
-        display:flex !important;
-        justify-content:center !important;
-        flex-wrap:wrap !important;
-        gap:10px !important;
-        position:static !important;
-        background:none !important;
-    }
-
-    
 
     .hero-content{
     display:flex;
@@ -3188,7 +2993,7 @@ footer p{
     .roadmap-branches{
         grid-template-columns:1fr !important;
     }
-}
+
 
 /* HAMBURGER MOBILE MENU */
 
@@ -4501,7 +4306,10 @@ nav{
 }
 
 .logo span{
+    display:block;
 
+    width:100%;
+    
     white-space:nowrap;
 
     overflow:hidden;
