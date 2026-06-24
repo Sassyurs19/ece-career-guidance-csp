@@ -31,11 +31,27 @@
     <div id="intro" class="intro" aria-label="Enter the ECE Laboratory">
         <div class="intro-scene"></div>
         <div class="intro-dark"></div>
+        <div class="intro-spot intro-spot--cro"></div>
+        <div class="intro-spot intro-spot--led"></div>
         <div class="intro-flashlight"></div>
-        <button id="enterBtn" class="enter-btn" type="button" aria-hidden="true" tabindex="-1" aria-label="Power on and enter the site">
-            <span class="enter-shine"></span>
-            <i class="fas fa-power-off enter-icon"></i>
+        <div class="intro-dust" id="introDust"></div>
+        <div class="intro-grain"></div>
+        <div class="intro-vignette"></div>
+
+        <!-- Premium ECE power node (hidden until the beam finds it) -->
+        <button id="enterBtn" class="power-node" type="button" aria-hidden="true" tabindex="-1" aria-label="Power on and enter the site">
+            <span class="pn-trace pn-trace--t"></span>
+            <span class="pn-trace pn-trace--b"></span>
+            <span class="pn-trace pn-trace--l"></span>
+            <span class="pn-trace pn-trace--r"></span>
+            <span class="pn-led" aria-hidden="true"></span>
+            <span class="pn-plate">
+                <span class="pn-shine"></span>
+                <i class="fas fa-power-off pn-symbol"></i>
+            </span>
+            <span class="pn-label">POWER</span>
         </button>
+
         <p class="intro-hint">Use your flashlight to explore the lab…</p>
     </div>
 
