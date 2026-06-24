@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECE Career Explorer</title>
+    <title>ECE Career Explorer | Electronics & Communication Engineering Careers, Roadmap & CSP Project</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet"
@@ -20,32 +20,30 @@
     <!-- Loader -->
     <div id="loader">
 
-        <div class="cro-screen">
 
-            <h2>ECE CAREER EXPLORER</h2>
-
-            <svg class="cro-wave" viewBox="0 0 600 120">
-
-                <path
-                d="M0 60
-                   C50 0,100 120,150 60
-                   S250 0,300 60
-                   S400 120,450 60
-                   S550 0,600 60"/>
-
-            </svg>
-
-            <p id="loading-text">
-                Initializing CRO...
-            </p>
-
-            <div class="loading-percent">
-                0%
+        <div class="cro-device">
+            <div class="cro-screen">
+                <div class="cro-grid"></div>
+                <svg class="cro-trace" viewBox="0 0 1200 200" preserveAspectRatio="none">
+                    <path class="cro-line cro-line--dim" d="M0,100 C37,55 113,55 150,100 S263,145 300,100 S413,55 450,100 S563,145 600,100 S713,55 750,100 S863,145 900,100 S1013,55 1050,100 S1163,145 1200,100"/>
+                    <path class="cro-line" d="M0,100 C37,30 113,30 150,100 S263,170 300,100 S413,30 450,100 S563,170 600,100 S713,30 750,100 S863,170 900,100 S1013,30 1050,100 S1163,170 1200,100"/>
+                </svg>
+                <div class="cro-readout"><span class="loading-percent">0%</span></div>
             </div>
-
+            <div class="cro-controls">
+                <div class="cro-brand">ECE CAREER EXPLORER</div>
+                <p id="loading-text">Initializing CRO...</p>
+                <div class="cro-knob-row">
+                    <span class="cro-knob"></span>
+                    <span class="cro-knob"></span>
+                    <span class="cro-knob"></span>
+                    <span class="cro-led"></span>
+                </div>
+            </div>
         </div>
 
     </div>
+
 
     <div class="background"></div>
     <div class="circuit-overlay"></div>
@@ -58,7 +56,7 @@
     <!-- Navbar -->
     <nav>
 
-        <a href="index.html" class="home-icon">
+        <a href="index.html" class="home-icon" aria-label="Home">
             <i class="fas fa-house"></i>
         </a>
 
@@ -66,7 +64,7 @@
             ECE Career Explorer
         </div>
 
-        <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="menu-toggle" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Open menu">
             ☰
         </div>
 

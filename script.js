@@ -193,3 +193,25 @@ if (scrollBtn) {
     });
 
 }
+
+
+/* CLOSE MOBILE MENU ON LINK CLICK OR OUTSIDE TAP */
+
+document.addEventListener("click", (e) => {
+
+    const navLinks = document.getElementById("nav-links");
+    const toggle = document.querySelector(".menu-toggle");
+
+    if (!navLinks || !navLinks.classList.contains("active")) return;
+
+    // Close when a nav link is tapped
+    if (e.target.closest("#nav-links a")) {
+        navLinks.classList.remove("active");
+        return;
+    }
+
+    // Close when tapping outside the menu and the toggle
+    if (!navLinks.contains(e.target) && !(toggle && toggle.contains(e.target))) {
+        navLinks.classList.remove("active");
+    }
+});
