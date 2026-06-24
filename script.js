@@ -262,3 +262,35 @@ document.addEventListener("click", (e) => {
         closeMenu();
     }
 });
+
+
+
+/* ============================================================
+   NAV "MIXED INTO PAGE" — usable only at the very top
+   Visible/interactive at scrollY ~ 0; hides smoothly on scroll down,
+   returns when the user scrolls back to the top.
+   ============================================================ */
+
+(function () {
+
+    const nav = document.querySelector("nav");
+    if (!nav) return;
+
+    const SHOW_AT = 12; // px from top where the nav is fully usable
+
+    function syncNav() {
+        if (window.scrollY <= SHOW_AT) {
+            nav.classList.remove("nav-hidden");
+        } else {
+            nav.classList.add("nav-hidden");
+            // if the hamburger menu was open, close it as the nav leaves
+            closeMenu();
+        }
+    }
+
+    // run once on load and keep in sync while scrolling
+    syncNav();
+    window.addEventListener("scroll", syncNav, { passive: true });
+    window.addEventListener("resize", syncNav);
+
+})();
