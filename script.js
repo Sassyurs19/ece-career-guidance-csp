@@ -271,29 +271,7 @@ document.addEventListener("click", (e) => {
    returns when the user scrolls back to the top.
    ============================================================ */
 
-(function () {
-
-    const nav = document.querySelector("nav");
-    if (!nav) return;
-
-    const SHOW_AT = 12; // px from top where the nav is fully usable
-
-    function syncNav() {
-        if (window.scrollY <= SHOW_AT) {
-            nav.classList.remove("nav-hidden");
-        } else {
-            nav.classList.add("nav-hidden");
-            // if the hamburger menu was open, close it as the nav leaves
-            closeMenu();
-        }
-    }
-
-    // run once on load and keep in sync while scrolling
-    syncNav();
-    window.addEventListener("scroll", syncNav, { passive: true });
-    window.addEventListener("resize", syncNav);
-
-})();
+/* (removed) Header is now a static sticky bar — no scroll hide/show logic needed. */
 
 
 
@@ -335,9 +313,9 @@ document.addEventListener("click", (e) => {
 
     /* Place the hidden ENTER button in a dark corner of the room */
     function placeButton() {
-        // lower-left desk-shadow area — varies a touch by viewport
-        const bx = W() * 0.30;
-        const by = H() * 0.72;
+        // centered on screen
+        const bx = W() * 0.5;
+        const by = H() * 0.5;
         enterBtn.style.left = bx + "px";
         enterBtn.style.top = by + "px";
     }
@@ -378,8 +356,19 @@ document.addEventListener("click", (e) => {
             enterBtn.classList.add("discovered");
             enterBtn.setAttribute("aria-hidden", "false");
             enterBtn.setAttribute("tabindex", "0");
+            autoScan = false;            // stop auto-wander, but DO NOT lock pointer — beam stays movable
             const hint = intro.querySelector(".intro-hint");
-            if (hint) hint.textContent = "You found the power button — click to enter.";
+            let n = 3;
+            if (hint) hint.textContent = "Entering the website in " + n + "…";
+            const cd = setInterval(() => {
+                n--;
+                if (n > 0) {
+                    if (hint) hint.textContent = "Entering the website in " + n + "…";
+                } else {
+                    clearInterval(cd);
+                    enterSite();
+                }
+            }, 1000);
         }
     }
 
@@ -424,6 +413,7 @@ document.addEventListener("click", (e) => {
             enterBtn.classList.add("discovered");
             enterBtn.setAttribute("aria-hidden", "false");
             enterBtn.setAttribute("tabindex", "0");
+            setTimeout(enterSite, 1200);
         }, 600);
     }
 
