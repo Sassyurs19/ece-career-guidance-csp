@@ -1770,9 +1770,6 @@ nav.nav-hidden{
    CINEMATIC INTRO — DARK LAB + FLASHLIGHT + ENTER BUTTON
    ============================================================ */
 
-.intro{
-
-
 /* Lock all page movement while the cinematic intro overlay is active.
    Applied to <html> and <body> on load; removed after ENTER transition. */
 html.intro-active,
@@ -2022,7 +2019,6 @@ body.intro-active{
     .power-node.discovered{animation:none;}
     .intro-hint{animation:none;opacity:.5;}
 }
-}
 
 
 /* ============================================================
@@ -2193,4 +2189,25 @@ nav #nav-links a.active::after{ display:none !important; }
 .feature-card h3 i{
     color:#0a6ea8 !important;
     filter:none !important;
+}
+
+
+
+/* ============================================================
+   HEADER REVISION — flush top (no gap) + subtle underline
+   Nav is static now, so the body's old fixed-nav offset just
+   created blank space at the top. Remove it and separate the
+   header from the page with a thin divider line.
+   ============================================================ */
+body{ padding-top:0 !important; }
+
+@media (max-width:768px){
+    body{ padding-top:0 !important; }
+}
+
+nav,
+.site-header{
+    margin-top:0 !important;
+    border-bottom:1px solid rgba(120,160,210,.28) !important;
+    box-shadow:0 1px 0 rgba(255,255,255,.04) !important;
 }
