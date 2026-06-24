@@ -1,59 +1,111 @@
 console.log("ECE Career Explorer Loaded");
 
-/* MOBILE MENU */
+/* ============================================================
+   MOBILE MENU (click + keyboard + aria-expanded sync)
+   ============================================================ */
 
-function toggleMenu() {
-
-    document
-        .getElementById("nav-links")
-        .classList
-        .toggle("active");
+function setExpanded(isOpen) {
+    const toggle = document.querySelector(".menu-toggle");
+    if (toggle) {
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    }
 }
 
-/* QUIZ */
+function toggleMenu() {
+    const navLinks = document.getElementById("nav-links");
+    if (!navLinks) return;
+    const isOpen = navLinks.classList.toggle("active");
+    setExpanded(isOpen);
+}
+
+function closeMenu() {
+    const navLinks = document.getElementById("nav-links");
+    if (navLinks) navLinks.classList.remove("active");
+    setExpanded(false);
+}
+
+/* Keyboard activation for div-based controls (Enter / Space) */
+document.addEventListener("keydown", (e) => {
+
+    const isActivate =
+        e.key === "Enter" || e.key === " " || e.key === "Spacebar";
+
+    if (!isActivate) return;
+
+    const target = e.target;
+    if (!target || !target.classList) return;
+
+    if (target.classList.contains("menu-toggle")) {
+        e.preventDefault();
+        toggleMenu();
+    }
+
+    else if (target.classList.contains("back-arrow")) {
+        e.preventDefault();
+        history.back();
+    }
+});
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
 
 function checkQuiz() {
 
-    let score = 0;
-
-    const answers = document.querySelectorAll(
-        'input[value="correct"]:checked'
-    );
-
-    score = answers.length;
-
-    let result =
-        document.getElementById("quiz-result");
+    const result = document.getElementById("quiz-result");
 
     if (!result) return;
+
+    const totalQuestions = 5;
+
+    /* Count how many distinct questions have an answer selected */
+    const answeredGroups = new Set();
+
+    document
+        .querySelectorAll('input[type="radio"]:checked')
+        .forEach((input) => answeredGroups.add(input.name));
+
+    if (answeredGroups.size < totalQuestions) {
+
+        result.innerHTML =
+            '<i class="fas fa-circle-info" aria-hidden="true"></i> ' +
+            'Please answer all questions before submitting.';
+
+        return;
+    }
+
+    const score = document.querySelectorAll(
+        'input[value="correct"]:checked'
+    ).length;
 
     if (score === 5) {
 
         result.innerHTML =
-            "🌟 Excellent! Score: 5/5";
+            '<i class="fas fa-star" aria-hidden="true"></i> Excellent! Score: 5/5';
 
     }
 
     else if (score >= 3) {
 
         result.innerHTML =
-            "🚀 Great Job! Score: " +
-            score +
-            "/5";
+            '<i class="fas fa-rocket" aria-hidden="true"></i> Great Job! Score: ' +
+            score + '/5';
 
     }
 
     else {
 
         result.innerHTML =
-            "📚 Nice Try! Score: " +
-            score +
-            "/5";
+            '<i class="fas fa-book" aria-hidden="true"></i> Nice Try! Score: ' +
+            score + '/5';
 
     }
 }
 
-/* FADE ANIMATION */
+/* ============================================================
+   FADE ANIMATION
+   ============================================================ */
 
 const observer = new IntersectionObserver((entries) => {
 
@@ -73,7 +125,9 @@ document
     .querySelectorAll(".fade-in")
     .forEach((el) => observer.observe(el));
 
-/* ADVANCED CRO LOADER */
+/* ============================================================
+   ADVANCED CRO LOADER
+   ============================================================ */
 
 window.addEventListener("load", () => {
 
@@ -89,26 +143,19 @@ window.addEventListener("load", () => {
     if (!loader || !text) return;
 
     const messages = [
-
-    "Booting CRO...",
-
-    "Scanning Communication Channels...",
-
-    "Analyzing Signals...",
-
-    "Loading ECE Pathways...",
-
-    "Launching Explorer..."
-
-];
+        "Booting CRO...",
+        "Scanning Communication Channels...",
+        "Analyzing Signals...",
+        "Loading ECE Pathways...",
+        "Launching Explorer..."
+    ];
 
     let index = 0;
-
     let percent = 0;
 
     const messageInterval = setInterval(() => {
 
-        if(index < messages.length){
+        if (index < messages.length) {
 
             text.textContent =
                 messages[index];
@@ -123,14 +170,14 @@ window.addEventListener("load", () => {
 
         percent += 4;
 
-        if(percentElement){
+        if (percentElement) {
 
             percentElement.textContent =
                 percent + "%";
 
         }
 
-        if(percent >= 100){
+        if (percent >= 100) {
 
             clearInterval(percentInterval);
 
@@ -157,7 +204,9 @@ window.addEventListener("load", () => {
 
 });
 
-/* SCROLL TO TOP BUTTON */
+/* ============================================================
+   SCROLL TO TOP BUTTON
+   ============================================================ */
 
 const scrollBtn =
     document.getElementById("scrollTopBtn");
@@ -183,19 +232,17 @@ if (scrollBtn) {
     scrollBtn.addEventListener("click", () => {
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     });
 
 }
 
-
-/* CLOSE MOBILE MENU ON LINK CLICK OR OUTSIDE TAP */
+/* ============================================================
+   CLOSE MOBILE MENU ON LINK CLICK OR OUTSIDE TAP
+   ============================================================ */
 
 document.addEventListener("click", (e) => {
 
@@ -206,12 +253,12 @@ document.addEventListener("click", (e) => {
 
     // Close when a nav link is tapped
     if (e.target.closest("#nav-links a")) {
-        navLinks.classList.remove("active");
+        closeMenu();
         return;
     }
 
     // Close when tapping outside the menu and the toggle
     if (!navLinks.contains(e.target) && !(toggle && toggle.contains(e.target))) {
-        navLinks.classList.remove("active");
+        closeMenu();
     }
 });

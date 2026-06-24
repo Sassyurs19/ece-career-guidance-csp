@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | ECE Career Explorer</title>
 
+    <meta name="description" content="Explore exciting career paths in Electronics & Communication Engineering — Embedded Systems, IoT, Robotics, VLSI, Communication and Software Engineering.">
+
+    <meta property="og:title" content="ECE Careers | ECE Career Explorer">
+    <meta property="og:description" content="Diverse ECE career opportunities in technology, innovation, communication and automation.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/site-bg.png">
+    <meta property="og:url" content="careers.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -21,45 +30,45 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     <div class="background"></div>
     <div class="circuit-overlay"></div>
 
-    <div class="floating-icon icon1">📡</div>
-    <div class="floating-icon icon2">🛰️</div>
-    <div class="floating-icon icon3">🤖</div>
-    <div class="floating-icon icon4">💻</div>
+    <div class="floating-icon icon1"><i class="fas fa-satellite-dish"></i></div>
+    <div class="floating-icon icon2"><i class="fas fa-satellite"></i></div>
+    <div class="floating-icon icon3"><i class="fas fa-robot"></i></div>
+    <div class="floating-icon icon4"><i class="fas fa-laptop-code"></i></div>
 
     <!-- Navbar -->
     <nav>
 
-    <a href="index.html" class="home-icon" aria-label="Home">
-    <i class="fas fa-house"></i>
-</a>
+        <a href="index.html" class="home-icon" aria-label="Home">
+            <i class="fas fa-house"></i>
+        </a>
 
-<div class="logo">
-    ECE Career Explorer
-</div>
+        <div class="logo">
+            ECE Career Explorer
+        </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Open menu">
-    ☰
-</div>
+        <div class="menu-toggle" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+            ☰
+        </div>
 
-    <ul id="nav-links">
+        <ul id="nav-links">
 
-        <li><a href="about.html">About ECE</a></li>
+            <li><a href="about.html">About ECE</a></li>
 
-        <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
 
-        <li><a href="careers.html" class="active">Careers</a></li>
+            <li><a href="careers.html" class="active">Careers</a></li>
 
-        <li><a href="project.html">Project</a></li>
+            <li><a href="project.html">Project</a></li>
 
-        <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
 
-    </ul>
+        </ul>
 
     </nav>
 
-<div class="back-arrow" onclick="history.back()">
-    <i class="fas fa-arrow-left"></i>
-</div>
+    <div class="back-arrow" onclick="history.back()" role="button" tabindex="0" aria-label="Go back">
+        <i class="fas fa-arrow-left"></i>
+    </div>
 
     <!-- Career Opportunities Section -->
 
@@ -90,37 +99,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         <div class="career-grid">
 
             <div class="career-card">
-                <div class="career-icon">💻</div>
+                <div class="career-icon"><i class="fas fa-microchip"></i></div>
                 <h3>Embedded Systems Engineer</h3>
                 <p>Design and develop smart electronic devices and embedded systems.</p>
             </div>
 
             <div class="career-card">
-                <div class="career-icon">🌐</div>
+                <div class="career-icon"><i class="fas fa-globe"></i></div>
                 <h3>IoT Developer</h3>
                 <p>Create connected devices and smart technology solutions.</p>
             </div>
 
             <div class="career-card">
-                <div class="career-icon">🤖</div>
+                <div class="career-icon"><i class="fas fa-robot"></i></div>
                 <h3>Robotics Engineer</h3>
                 <p>Build intelligent robots and automation systems.</p>
             </div>
-            
+
             <div class="career-card">
-                <div class="career-icon">📡</div>
+                <div class="career-icon"><i class="fas fa-satellite-dish"></i></div>
                 <h3>Communication Engineer</h3>
                 <p>Develop wireless communication and networking systems.</p>
             </div>
 
             <div class="career-card">
-                <div class="career-icon">🔌</div>
+                <div class="career-icon"><i class="fas fa-network-wired"></i></div>
                 <h3>VLSI Engineer</h3>
                 <p>Design advanced semiconductor chips and processors.</p>
             </div>
 
             <div class="career-card">
-                <div class="career-icon">🖥️</div>
+                <div class="career-icon"><i class="fas fa-desktop"></i></div>
                 <h3>Software Engineer</h3>
                 <p>Build applications, systems, and technology platforms.</p>
             </div>
@@ -130,59 +139,56 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     </section>
 
 
+    <!-- Footer -->
 
-    
-<!-- Footer -->
+    <footer class="footer">
 
-<footer class="footer">
+        <h3>ECE Career Explorer</h3>
 
-    <h3>ECE Career Explorer</h3>
+        <p>Community Service Project</p>
 
-    <p>Community Service Project</p>
+        <p>
+            Department of Electronics &
+            Communication Engineering
+        </p>
 
-    <p>
-        Department of Electronics &
-        Communication Engineering
-    </p>
+        <p>
+            ZPHS Kanchikacherla Outreach Program
+        </p>
 
-    <p>
-        ZPHS Kanchikacherla Outreach Program
-    </p>
+        <p>
+            © 2026 All Rights Reserved
+        </p>
 
-    <p>
-        © 2026 All Rights Reserved
-    </p>
+    </footer>
 
-</footer>
+    <div id="loader">
 
-<div id="loader">
-
-
-    <div class="cro-device">
-        <div class="cro-screen">
-            <div class="cro-grid"></div>
-            <svg class="cro-trace" viewBox="0 0 1200 200" preserveAspectRatio="none">
-                <path class="cro-line cro-line--dim" d="M0,100 C37,55 113,55 150,100 S263,145 300,100 S413,55 450,100 S563,145 600,100 S713,55 750,100 S863,145 900,100 S1013,55 1050,100 S1163,145 1200,100"/>
-                <path class="cro-line" d="M0,100 C37,30 113,30 150,100 S263,170 300,100 S413,30 450,100 S563,170 600,100 S713,30 750,100 S863,170 900,100 S1013,30 1050,100 S1163,170 1200,100"/>
-            </svg>
-            <div class="cro-readout"><span class="loading-percent">0%</span></div>
-        </div>
-        <div class="cro-controls">
-            <div class="cro-brand">ECE CAREER EXPLORER</div>
-            <p id="loading-text">Initializing CRO...</p>
-            <div class="cro-knob-row">
-                <span class="cro-knob"></span>
-                <span class="cro-knob"></span>
-                <span class="cro-knob"></span>
-                <span class="cro-led"></span>
+        <div class="cro-device">
+            <div class="cro-screen">
+                <div class="cro-grid"></div>
+                <svg class="cro-trace" viewBox="0 0 1200 200" preserveAspectRatio="none">
+                    <path class="cro-line cro-line--dim" d="M0,100 C37,55 113,55 150,100 S263,145 300,100 S413,55 450,100 S563,145 600,100 S713,55 750,100 S863,145 900,100 S1013,55 1050,100 S1163,145 1200,100"/>
+                    <path class="cro-line" d="M0,100 C37,30 113,30 150,100 S263,170 300,100 S413,30 450,100 S563,170 600,100 S713,30 750,100 S863,170 900,100 S1013,30 1050,100 S1163,170 1200,100"/>
+                </svg>
+                <div class="cro-readout"><span class="loading-percent">0%</span></div>
+            </div>
+            <div class="cro-controls">
+                <div class="cro-brand">ECE CAREER EXPLORER</div>
+                <p id="loading-text">Initializing CRO...</p>
+                <div class="cro-knob-row">
+                    <span class="cro-knob"></span>
+                    <span class="cro-knob"></span>
+                    <span class="cro-knob"></span>
+                    <span class="cro-led"></span>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
 
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
