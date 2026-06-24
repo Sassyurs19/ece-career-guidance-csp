@@ -142,29 +142,9 @@ window.addEventListener("load", () => {
 
     if (!loader || !text) return;
 
-    const messages = [
-        "Booting CRO...",
-        "Scanning Communication Channels...",
-        "Analyzing Signals...",
-        "Loading ECE Pathways...",
-        "Launching Explorer..."
-    ];
+    text.textContent = "Loading...";
 
-    let index = 0;
     let percent = 0;
-
-    const messageInterval = setInterval(() => {
-
-        if (index < messages.length) {
-
-            text.textContent =
-                messages[index];
-
-            index++;
-
-        }
-
-    }, 500);
 
     const percentInterval = setInterval(() => {
 
@@ -186,8 +166,6 @@ window.addEventListener("load", () => {
     }, 80);
 
     setTimeout(() => {
-
-        clearInterval(messageInterval);
 
         loader.style.opacity = "0";
 
@@ -304,11 +282,11 @@ document.addEventListener("click", (e) => {
     const H = () => window.innerHeight;
 
     /* target (pointer) + eased current beam position, in px */
-    let tx = W() * 0.5, ty = H() * 0.55;
+    let tx = W() * 0.18, ty = H() * 0.22;
     let cx = tx, cy = ty;
 
     let pointerActive = false;
-    let autoScan = !reduceMotion;
+    let autoScan = false;
     const startTime = performance.now();
 
     /* Place the hidden ENTER button in a dark corner of the room */
@@ -322,7 +300,7 @@ document.addEventListener("click", (e) => {
     placeButton();
     window.addEventListener("resize", () => {
         placeButton();
-        if (!pointerActive) { tx = W() * 0.5; ty = H() * 0.55; }
+        if (!pointerActive) { tx = W() * 0.18; ty = H() * 0.22; }
     });
 
     /* Pointer / touch control */
@@ -356,19 +334,9 @@ document.addEventListener("click", (e) => {
             enterBtn.classList.add("discovered");
             enterBtn.setAttribute("aria-hidden", "false");
             enterBtn.setAttribute("tabindex", "0");
-            autoScan = false;            // stop auto-wander, but DO NOT lock pointer — beam stays movable
+            autoScan = false;
             const hint = intro.querySelector(".intro-hint");
-            let n = 3;
-            if (hint) hint.textContent = "Entering the website in " + n + "…";
-            const cd = setInterval(() => {
-                n--;
-                if (n > 0) {
-                    if (hint) hint.textContent = "Entering the website in " + n + "…";
-                } else {
-                    clearInterval(cd);
-                    enterSite();
-                }
-            }, 1000);
+            if (hint) hint.textContent = "Click the power button to enter";
         }
     }
 
@@ -381,16 +349,6 @@ document.addEventListener("click", (e) => {
     }
 
     function frame(now) {
-        if (autoScan) {
-            const p = autoScanPos(now);
-            tx = p.x; ty = p.y;
-            // after a few seconds, drift the scan toward the hidden button
-            if ((now - startTime) > 4200) {
-                const r = enterBtn.getBoundingClientRect();
-                tx = r.left + r.width / 2;
-                ty = r.top + r.height / 2;
-            }
-        }
         // eased follow
         cx += (tx - cx) * 0.12;
         cy += (ty - cy) * 0.12;
@@ -406,15 +364,22 @@ document.addEventListener("click", (e) => {
 
     let rafId = requestAnimationFrame(frame);
 
-    /* For reduced motion: reveal the button quickly without a long scan */
-    if (reduceMotion) {
-        setTimeout(() => {
-            discovered = true;
-            enterBtn.classList.add("discovered");
-            enterBtn.setAttribute("aria-hidden", "false");
-            enterBtn.setAttribute("tabindex", "0");
-            setTimeout(enterSite, 1200);
-        }, 600);
+    let entering = false;
+    function startEntering() {
+        if (entering) return;
+        entering = true;
+        const hint = intro.querySelector(".intro-hint");
+        let n = 3;
+        if (hint) hint.textContent = "Entering the website in " + n + "…";
+        const cd = setInterval(() => {
+            n--;
+            if (n > 0) {
+                if (hint) hint.textContent = "Entering the website in " + n + "…";
+            } else {
+                clearInterval(cd);
+                enterSite();
+            }
+        }, 1000);
     }
 
     /* ENTER click → cinematic fade + camera push, then reveal homepage */
@@ -429,11 +394,13 @@ document.addEventListener("click", (e) => {
         }, reduceMotion ? 500 : 1400);
     }
 
-    enterBtn.addEventListener("click", enterSite);
+    enterBtn.addEventListener("click", () => {
+        if (enterBtn.classList.contains("discovered")) startEntering();
+    });
     enterBtn.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
             e.preventDefault();
-            if (enterBtn.classList.contains("discovered")) enterSite();
+            if (enterBtn.classList.contains("discovered")) startEntering();
         }
     });
 

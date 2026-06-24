@@ -1792,14 +1792,15 @@ body.intro-active{
 /* keep flashlight touch gestures firing while scrolling is blocked */
 .intro{touch-action:none;overscroll-behavior:none;}
 
+.intro{
     position:fixed;
     inset:0;
     z-index:99999;
     overflow:hidden;
     background:#000;
     cursor:crosshair;
-    --bx:50%;
-    --by:55%;
+    --bx:18%;
+    --by:22%;
     opacity:1;
     transform:scale(1);
     transition:opacity 1.2s ease, transform 1.4s cubic-bezier(.6,.01,.2,1);
@@ -1960,7 +1961,7 @@ body.intro-active{
     position:absolute;
     left:50%; top:50%;
     transform:translate(-50%,-50%) scale(.8);
-    width:120px; height:120px;
+    width:84px; height:84px;
     display:flex; align-items:center; justify-content:center;
     background:none; border:0; padding:0;
     cursor:pointer; opacity:0; pointer-events:none;
@@ -1968,7 +1969,7 @@ body.intro-active{
     -webkit-tap-highlight-color:transparent;
 }
 .pn-symbol{
-    font-size:5rem;
+    font-size:3.2rem;
     color:rgba(170,205,235,.8);
     transition:color .6s ease, text-shadow .6s ease;
 }
@@ -2001,8 +2002,8 @@ body.intro-active{
 }
 
 @media (max-width:600px){
-    .power-node{width:96px;height:96px;}
-    .pn-symbol{font-size:4rem;}
+    .power-node{width:66px;height:66px;}
+    .pn-symbol{font-size:2.5rem;}
     .intro-hint{font-size:.72rem;bottom:8%;}
     .intro-scene{
         -webkit-mask:radial-gradient(circle 78px at var(--bx) var(--by),
@@ -2020,4 +2021,5 @@ body.intro-active{
     .intro{transition:opacity .5s ease;}
     .power-node.discovered{animation:none;}
     .intro-hint{animation:none;opacity:.5;}
+}
 }
