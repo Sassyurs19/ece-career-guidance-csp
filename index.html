@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,87 +17,111 @@
 
 <body>
 
+    <!-- Loader -->
+    <div id="loader">
+
+        <div class="cro-screen">
+
+            <h2>ECE CAREER EXPLORER</h2>
+
+            <svg class="cro-wave" viewBox="0 0 600 120">
+
+                <path
+                d="M0 60
+                   C50 0,100 120,150 60
+                   S250 0,300 60
+                   S400 120,450 60
+                   S550 0,600 60"/>
+
+            </svg>
+
+            <p id="loading-text">
+                Initializing CRO...
+            </p>
+
+            <div class="loading-percent">
+                0%
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="background"></div>
     <div class="circuit-overlay"></div>
 
-    <div class="floating-icon">📡</div>
-    <div class="floating-icon">🛰️</div>
-    <div class="floating-icon">🤖</div>
-    <div class="floating-icon">💻</div>
+    <div class="floating-icon icon1">📡</div>
+    <div class="floating-icon icon2">🛰️</div>
+    <div class="floating-icon icon3">🤖</div>
+    <div class="floating-icon icon4">💻</div>
 
     <!-- Navbar -->
     <nav>
 
-    <a href="index.html" class="home-icon">
-    <i class="fas fa-house"></i>
-</a>
+        <a href="index.html" class="home-icon">
+            <i class="fas fa-house"></i>
+        </a>
 
-<div class="logo">
-    ECE Career Explorer
-</div>
+        <div class="logo">
+            ECE Career Explorer
+        </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-    ☰
-</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </div>
 
-    <ul id="nav-links">
+        <ul id="nav-links">
 
-        <li><a href="about.html">About ECE</a></li>
+            <li><a href="about.html">About ECE</a></li>
 
-        <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
 
-        <li><a href="careers.html">Careers</a></li>
+            <li><a href="careers.html">Careers</a></li>
 
-        <li><a href="project.html">Project</a></li>
+            <li><a href="project.html">Project</a></li>
 
-        <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
 
-    </ul>
+        </ul>
 
     </nav>
 
 
     <!-- Hero Section -->
-<section id="home" class="hero">
+    <section id="home" class="hero">
 
-    <div class="hero-content">
+        <div class="hero-content">
 
-        <div class="hero-left">
+            <div class="hero-left">
 
-            <div class="hero-tag">
-                COMMUNITY SERVICE PROJECT
-            </div>
+                <h1 class="metal-title">
+                    ECE CAREER EXPLORER
+                </h1>
 
-            <h1 class="metal-title">
-                ECE CAREER EXPLORER
-            </h1>
+                <p>
+                    Explore Electronics & Communication Engineering,
+                    educational pathways, career opportunities,
+                    future technologies, and our Community Service Project
+                    designed to guide students towards a successful future.
+                </p>
 
-            <p>
-            Explore Electronics & Communication Engineering,
-            educational pathways, career opportunities,
-            future technologies, and our Community Service Project
-            designed to guide students towards a successful future.
-            </p>
+                <div class="buttons">
 
-            <div class="buttons">
+                    <a href="about.html" class="primary-btn">
+                        About ECE
+                    </a>
 
-                <a href="about.html" class="primary-btn">
-                    About ECE
-                </a>
+                    <a href="project.html" class="secondary-btn">
+                        View CSP Project
+                    </a>
 
-                <a href="project.html" class="secondary-btn">
-                    View CSP Project
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-
-
-    </div>
-
-</section>
+    </section>
 
     <!-- Statistics Section -->
     <section class="stats">
@@ -131,111 +154,78 @@
 
     <section class="ece-section fade-in">
 
-<div class="section-title">
+        <div class="section-title">
 
-<span>YOUR ECE JOURNEY</span>
+            <span>YOUR ECE JOURNEY</span>
 
-<h2>Explore Electronics & Communication Engineering</h2>
+            <h2>Explore Electronics & Communication Engineering</h2>
 
-<p>
-Choose a section below to learn more about Electronics &
-Communication Engineering.
-</p>
+            <p>
+                Choose a section below to learn more about Electronics &
+                Communication Engineering.
+            </p>
 
-</div>
-
-<div class="ece-grid">
-
-<div class="ece-card">
-<h3>📡 About ECE</h3>
-<p>Learn about Electronics & Communication Engineering.</p>
-<a href="about.html"> 📡 Learn ECE </a>
-</div>
-
-<div class="ece-card">
-<h3>🎓 Roadmap</h3>
-<p>Educational journey towards ECE.</p>
-<a href="roadmap.html">🛣️ View Roadmap</a>
-</div>
-
-<div class="ece-card">
-<h3>💼 Careers</h3>
-<p>Explore future career opportunities.</p>
-<a href="careers.html">💼 Career Paths</a>
-</div>
-
-<div class="ece-card">
-<h3>📘 CSP Project</h3>
-<p>View our Community Service Project.</p>
-<a href="project.html">📘 View Project</a>
-</div>
-
-<div class="ece-card">
-<h3>🧠 Quiz</h3>
-<p>Test your ECE knowledge.</p>
-<a href="quiz.html">🧠 Start Quiz</a>
-</div>
-
-</div>
-
-</section>
-
-<!-- Footer -->
-
-<footer class="footer">
-
-    <h3>ECE Career Explorer</h3>
-
-    <p>Community Service Project</p>
-
-    <p>
-        Department of Electronics &
-        Communication Engineering
-    </p>
-
-    <p>
-        ZPHS Kanchikacherla Outreach Program
-    </p>
-
-    <p>
-        © 2026 All Rights Reserved
-    </p>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-<div id="loader">
-
-    <div class="cro-screen">
-
-        <h2>ECE CAREER EXPLORER</h2>
-
-        <svg class="cro-wave" viewBox="0 0 600 120">
-
-            <path
-            d="M0 60
-               C50 0,100 120,150 60
-               S250 0,300 60
-               S400 120,450 60
-               S550 0,600 60"/>
-
-        </svg>
-
-        <p id="loading-text">
-            Initializing CRO...
-        </p>
-
-        <div class="loading-percent">
-            0%
         </div>
 
-    </div>
+        <div class="ece-grid">
 
-</div>
+            <div class="ece-card">
+                <h3>📡 About ECE</h3>
+                <p>Learn about Electronics & Communication Engineering.</p>
+                <a href="about.html"> 📡 Learn ECE </a>
+            </div>
 
-<script src="script.js"></script>
+            <div class="ece-card">
+                <h3>🎓 Roadmap</h3>
+                <p>Educational journey towards ECE.</p>
+                <a href="roadmap.html">🛣️ View Roadmap</a>
+            </div>
+
+            <div class="ece-card">
+                <h3>💼 Careers</h3>
+                <p>Explore future career opportunities.</p>
+                <a href="careers.html">💼 Career Paths</a>
+            </div>
+
+            <div class="ece-card">
+                <h3>📘 CSP Project</h3>
+                <p>View our Community Service Project.</p>
+                <a href="project.html">📘 View Project</a>
+            </div>
+
+            <div class="ece-card">
+                <h3>🧠 Quiz</h3>
+                <p>Test your ECE knowledge.</p>
+                <a href="quiz.html">🧠 Start Quiz</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <h3>ECE Career Explorer</h3>
+
+        <p>Community Service Project</p>
+
+        <p>
+            Department of Electronics &
+            Communication Engineering
+        </p>
+
+        <p>
+            ZPHS Kanchikacherla Outreach Program
+        </p>
+
+        <p>
+            © 2026 All Rights Reserved
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
