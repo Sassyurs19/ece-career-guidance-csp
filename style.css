@@ -2023,3 +2023,174 @@ body.intro-active{
     .intro-hint{animation:none;opacity:.5;}
 }
 }
+
+
+/* ============================================================
+   USER-REQUESTED EDITS (final override pass — wins the cascade)
+   1) Smaller/subtler intro power button (desktop)
+   2) Keep mobile intro power button usable
+   3) Plain non-boxed, non-sticky header (scrolls away)
+   4) Quiz cards + all boxes -> light metallic theme, dark text
+   ============================================================ */
+
+/* ---- 1. Intro power button: smaller + softer glow (desktop) ---- */
+.power-node{ width:52px; height:52px; }
+.pn-symbol{ font-size:2rem; }
+.power-node.discovered .pn-symbol{
+    color:#eaf6ff;
+    text-shadow:0 0 6px rgba(60,180,255,.55),0 0 14px rgba(40,150,255,.35);
+}
+.power-node.discovered::before{
+    inset:-16px;
+    background:radial-gradient(circle,rgba(40,160,255,.14),transparent 70%);
+}
+@keyframes pnPulse{
+    0%,100%{filter:drop-shadow(0 0 3px rgba(40,160,255,.4));}
+    50%{filter:drop-shadow(0 0 9px rgba(60,190,255,.6));}
+}
+
+/* ---- 2. Mobile: keep the find-the-power-button intro usable ---- */
+@media (max-width:600px){
+    .power-node{ width:58px; height:58px; }
+    .pn-symbol{ font-size:2.2rem; }
+}
+
+/* ---- 3. Header: plain links, no box/pill, NOT sticky (scrolls away) ---- */
+nav,
+.site-header{
+    position:static !important;
+    transform:none !important;
+    top:auto !important;
+    left:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:18px 26px !important;
+    background:none !important;
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+}
+
+/* don't let the scroll-hide logic move/hide the header anymore */
+nav.nav-hidden{
+    opacity:1 !important;
+    transform:none !important;
+    pointer-events:auto !important;
+}
+
+/* nav-links: strip the pill container */
+#nav-links{
+    background:none !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    box-shadow:none !important;
+}
+
+/* links: plain text, no boxed/pill highlight */
+nav #nav-links a,
+nav #nav-links a:hover,
+nav #nav-links a.active,
+#nav-links li a,
+#nav-links li a:hover,
+#nav-links li a.active{
+    background:none !important;
+    box-shadow:none !important;
+    border:none !important;
+    border-radius:0 !important;
+}
+nav #nav-links a.active::after{ display:none !important; }
+
+/* home icon + hamburger: drop the boxed chip look */
+.home-icon,
+.menu-toggle,
+.menu-toggle[aria-expanded="true"]{
+    background:none !important;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+}
+
+/* ---- 4. Cards / boxes -> light metallic theme with dark text ---- */
+.quiz-card,
+.ece-card,
+.career-card,
+.future-card,
+.stat-card,
+.team-card,
+.roadmap-card,
+.info-card,
+.about-card,
+.feature-card,
+.about-project-card,
+.project-title-card,
+.objective-card{
+    background:linear-gradient(145deg,#ffffff 0%,#eef2f7 42%,#fbfdff 52%,#d9e0ea 100%) !important;
+    border:1px solid rgba(176,186,202,.75) !important;
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.9) !important;
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    color:#0e1726 !important;
+}
+
+/* headings + body text inside boxes -> dark / black */
+.quiz-card h3{ color:#000 !important; text-shadow:none !important; }
+.ece-card h3,
+.career-card h3,
+.future-card h3,
+.roadmap-card h3,
+.about-card h3,
+.feature-card h3,
+.about-project-card h3,
+.project-title-card h3,
+.objective-card h3,
+.info-card h3,
+.team-card h3{ color:#0e1726 !important; text-shadow:none !important; }
+
+.ece-card p,
+.career-card p,
+.future-card p,
+.roadmap-card p,
+.about-card p,
+.feature-card p,
+.info-card p,
+.team-card p,
+.objective-card p,
+.quiz-card label{ color:#1a2434 !important; }
+
+/* stat card text on light surface */
+.stat-card h2{ color:#0b2a4a !important; text-shadow:none !important; }
+.stat-card p{ color:#0e1726 !important; }
+.stat-card span{ color:#3a4658 !important; }
+
+/* quiz answer options on light boxes */
+.quiz-card label,
+.quiz-container label,
+.question label,
+.quiz-question label{
+    color:#1a2434 !important;
+    background:rgba(255,255,255,.7) !important;
+    border:1px solid rgba(168,178,194,.8) !important;
+}
+.quiz-card label:hover{
+    background:rgba(224,234,247,.95) !important;
+    border-color:rgba(120,140,170,.9) !important;
+}
+
+/* keep card icon glyphs readable on the light surface */
+.ece-card h3 i,
+.career-card h3 i,
+.future-card h3 i,
+.roadmap-card h3 i,
+.about-project-card h3 i,
+.objective-card h3 i,
+.about-card h3 i,
+.feature-card h3 i{
+    color:#0a6ea8 !important;
+    filter:none !important;
+}
