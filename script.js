@@ -311,8 +311,9 @@ document.addEventListener("click", (e) => {
 
     /* Intro plays every time the page opens (project demo). */
 
-    /* lock scroll while the intro is on screen */
-    document.body.style.overflow = "hidden";
+    /* lock scroll/body movement while the intro is on screen (mobile + iOS Safari) */
+    document.body.classList.add("intro-active");
+    document.documentElement.classList.add("intro-active");
 
     const reduceMotion =
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -373,7 +374,7 @@ document.addEventListener("click", (e) => {
             enterBtn.setAttribute("aria-hidden", "false");
             enterBtn.setAttribute("tabindex", "0");
             const hint = intro.querySelector(".intro-hint");
-            if (hint) hint.textContent = "You found it — press ENTER";
+            if (hint) hint.textContent = "You found the power button — click to enter.";
         }
     }
 
@@ -427,7 +428,8 @@ document.addEventListener("click", (e) => {
         intro.classList.add("intro-exit");
         setTimeout(() => {
             cancelAnimationFrame(rafId);
-            document.body.style.overflow = "";
+            document.body.classList.remove("intro-active");
+            document.documentElement.classList.remove("intro-active");
             intro.remove();
         }, reduceMotion ? 500 : 1400);
     }

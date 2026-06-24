@@ -1771,6 +1771,27 @@ nav.nav-hidden{
    ============================================================ */
 
 .intro{
+
+
+/* Lock all page movement while the cinematic intro overlay is active.
+   Applied to <html> and <body> on load; removed after ENTER transition. */
+html.intro-active,
+body.intro-active{
+    overflow:hidden !important;
+    height:100%;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    touch-action:none;
+    overscroll-behavior:none;
+    -webkit-overflow-scrolling:auto;
+}
+/* keep flashlight touch gestures firing while scrolling is blocked */
+.intro{touch-action:none;overscroll-behavior:none;}
+
     position:fixed;
     inset:0;
     z-index:99999;
@@ -1847,25 +1868,23 @@ nav.nav-hidden{
     position:absolute;
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) scale(.9);
-    width:118px;
-    height:42px;
-    border:1px solid rgba(180,200,220,.25);
-    border-radius:8px;
-    font-family:"Orbitron",sans-serif;
-    font-size:.85rem;
-    font-weight:700;
-    letter-spacing:.22em;
-    color:rgba(220,235,255,.85);
+    transform:translate(-50%,-50%) scale(.85);
+    width:54px;
+    height:54px;
+    border:1px solid rgba(180,200,220,.3);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     cursor:pointer;
     overflow:hidden;
     isolation:isolate;
     background:
-        linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,0) 40%),
-        linear-gradient(160deg,#cfd8e3 0%,#8a97a8 22%,#5b6675 50%,#39414d 74%,#cdd6e2 100%);
+        radial-gradient(circle at 32% 28%,rgba(255,255,255,.18),rgba(255,255,255,0) 45%),
+        linear-gradient(160deg,#dfe6ef 0%,#9aa6b6 26%,#5b6675 56%,#363d49 80%,#cdd6e2 100%);
     box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.35),
-        inset 0 -2px 6px rgba(0,0,0,.55);
+        inset 0 1px 2px rgba(255,255,255,.4),
+        inset 0 -3px 7px rgba(0,0,0,.55);
     /* essentially invisible & unclickable until discovered */
     opacity:0;
     pointer-events:none;
@@ -1873,14 +1892,12 @@ nav.nav-hidden{
     backdrop-filter:blur(2px);
 }
 
-.enter-label{
+.enter-icon{
     position:relative;
     z-index:2;
-    background:linear-gradient(180deg,#ffffff,#aab6c6);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow:0 1px 0 rgba(0,0,0,.25);
+    font-size:1.15rem;
+    color:rgba(225,238,255,.9);
+    text-shadow:0 1px 1px rgba(0,0,0,.4);
 }
 
 /* metallic shine sweep */
@@ -1911,6 +1928,11 @@ nav.nav-hidden{
 
 .enter-btn.discovered .enter-shine{
     animation:enterShine 2.4s ease-in-out infinite;
+}
+
+.enter-btn.discovered .enter-icon{
+    color:#eaf6ff;
+    text-shadow:0 0 8px rgba(60,180,255,.95),0 0 18px rgba(40,150,255,.7);
 }
 
 @keyframes enterShine{
@@ -1952,7 +1974,8 @@ nav.nav-hidden{
 }
 
 @media (max-width:600px){
-    .enter-btn{width:104px;height:38px;font-size:.74rem;letter-spacing:.18em;border-radius:7px;}
+    .enter-btn{width:46px;height:46px;}
+    .enter-icon{font-size:1rem;}
     .enter-btn.discovered::before{inset:-26px;}
     .intro-hint{font-size:.72rem;bottom:8%;}
     .intro-scene{
