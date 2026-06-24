@@ -294,3 +294,150 @@ document.addEventListener("click", (e) => {
     window.addEventListener("resize", syncNav);
 
 })();
+
+
+
+/* ============================================================
+   CINEMATIC INTRO — flashlight beam + ENTER discovery
+   (homepage only; plays once per session)
+   ============================================================ */
+
+(function () {
+
+    const intro = document.getElementById("intro");
+    if (!intro) return;
+
+    const enterBtn = document.getElementById("enterBtn");
+
+    /* Intro plays every time the page opens (project demo). */
+
+    /* lock scroll while the intro is on screen */
+    document.body.style.overflow = "hidden";
+
+    const reduceMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const W = () => window.innerWidth;
+    const H = () => window.innerHeight;
+
+    /* target (pointer) + eased current beam position, in px */
+    let tx = W() * 0.5, ty = H() * 0.55;
+    let cx = tx, cy = ty;
+
+    let pointerActive = false;
+    let autoScan = !reduceMotion;
+    const startTime = performance.now();
+
+    /* Place the hidden ENTER button in a dark corner of the room */
+    function placeButton() {
+        // lower-left desk-shadow area — varies a touch by viewport
+        const bx = W() * 0.30;
+        const by = H() * 0.72;
+        enterBtn.style.left = bx + "px";
+        enterBtn.style.top = by + "px";
+    }
+    placeButton();
+    window.addEventListener("resize", () => {
+        placeButton();
+        if (!pointerActive) { tx = W() * 0.5; ty = H() * 0.55; }
+    });
+
+    /* Pointer / touch control */
+    function setTarget(x, y) {
+        tx = x; ty = y;
+        pointerActive = true;
+        autoScan = false;
+    }
+
+    intro.addEventListener("mousemove", (e) => setTarget(e.clientX, e.clientY));
+    intro.addEventListener("touchmove", (e) => {
+        if (e.touches && e.touches[0]) {
+            setTarget(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    }, { passive: true });
+
+    let discovered = false;
+    function checkDiscovery() {
+        if (discovered) return;
+        const r = enterBtn.getBoundingClientRect();
+        const bxC = r.left + r.width / 2;
+        const byC = r.top + r.height / 2;
+        // only "discovered" when the beam is actually ON the button
+        const margin = Math.min(W(), H()) < 600 ? 14 : 22;
+        const within =
+            cx > r.left - margin && cx < r.right + margin &&
+            cy > r.top - margin && cy < r.bottom + margin;
+        if (within) {
+            discovered = true;
+            enterBtn.classList.add("discovered");
+            enterBtn.setAttribute("aria-hidden", "false");
+            enterBtn.setAttribute("tabindex", "0");
+            const hint = intro.querySelector(".intro-hint");
+            if (hint) hint.textContent = "You found it — press ENTER";
+        }
+    }
+
+    /* Smooth auto-scan path so it feels human-controlled before input */
+    function autoScanPos(t) {
+        const s = (t - startTime) / 1000;
+        const x = W() * (0.5 + 0.26 * Math.sin(s * 0.7));
+        const y = H() * (0.5 + 0.18 * Math.sin(s * 0.95 + 1.2));
+        return { x, y };
+    }
+
+    function frame(now) {
+        if (autoScan) {
+            const p = autoScanPos(now);
+            tx = p.x; ty = p.y;
+            // after a few seconds, drift the scan toward the hidden button
+            if ((now - startTime) > 4200) {
+                const r = enterBtn.getBoundingClientRect();
+                tx = r.left + r.width / 2;
+                ty = r.top + r.height / 2;
+            }
+        }
+        // eased follow
+        cx += (tx - cx) * 0.12;
+        cy += (ty - cy) * 0.12;
+
+        const bx = (cx / W() * 100).toFixed(2) + "%";
+        const by = (cy / H() * 100).toFixed(2) + "%";
+        intro.style.setProperty("--bx", bx);
+        intro.style.setProperty("--by", by);
+
+        checkDiscovery();
+        rafId = requestAnimationFrame(frame);
+    }
+
+    let rafId = requestAnimationFrame(frame);
+
+    /* For reduced motion: reveal the button quickly without a long scan */
+    if (reduceMotion) {
+        setTimeout(() => {
+            discovered = true;
+            enterBtn.classList.add("discovered");
+            enterBtn.setAttribute("aria-hidden", "false");
+            enterBtn.setAttribute("tabindex", "0");
+        }, 600);
+    }
+
+    /* ENTER click → cinematic fade + camera push, then reveal homepage */
+    function enterSite() {
+        if (intro.classList.contains("intro-exit")) return;
+        intro.classList.add("intro-exit");
+        setTimeout(() => {
+            cancelAnimationFrame(rafId);
+            document.body.style.overflow = "";
+            intro.remove();
+        }, reduceMotion ? 500 : 1400);
+    }
+
+    enterBtn.addEventListener("click", enterSite);
+    enterBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            if (enterBtn.classList.contains("discovered")) enterSite();
+        }
+    });
+
+})();

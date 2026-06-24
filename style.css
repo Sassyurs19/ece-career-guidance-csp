@@ -48,7 +48,11 @@ body{
     background:
         radial-gradient(120% 80% at 50% -10%,rgba(34,211,238,.16),transparent 55%),
         radial-gradient(90% 70% at 50% 0%,rgba(61,255,158,.08),transparent 60%),
-        linear-gradient(180deg,#0c1630 0%,#0a1224 45%,#070d1c 100%);
+        linear-gradient(180deg,rgba(8,14,30,.86),rgba(6,11,24,.92)),
+        url("assets/images/lab-bg.png");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
     z-index:-2;
 }
 
@@ -1758,4 +1762,213 @@ nav.nav-hidden{
 @media(prefers-reduced-motion:reduce){
     nav{ transition:opacity .25s ease !important; }
     nav.nav-hidden{ transform:translateX(-50%); }
+}
+
+
+
+/* ============================================================
+   CINEMATIC INTRO — DARK LAB + FLASHLIGHT + ENTER BUTTON
+   ============================================================ */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    overflow:hidden;
+    background:#000;
+    cursor:crosshair;
+    --bx:50%;
+    --by:55%;
+    opacity:1;
+    transform:scale(1);
+    transition:opacity 1.2s ease, transform 1.4s cubic-bezier(.6,.01,.2,1);
+}
+
+/* Dimly lit lab photo underneath */
+.intro-scene{
+    position:absolute;
+    inset:0;
+    background:url("assets/images/lab-bg.png") center/cover no-repeat;
+    /* the beam reveals the lab; everything else is masked to near-black */
+    -webkit-mask:radial-gradient(circle 165px at var(--bx) var(--by),
+        rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 35%, rgba(0,0,0,.18) 70%, rgba(0,0,0,0) 100%);
+    mask:radial-gradient(circle 165px at var(--bx) var(--by),
+        rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 35%, rgba(0,0,0,.18) 70%, rgba(0,0,0,0) 100%);
+    filter:brightness(.95) saturate(1.05);
+    will-change:-webkit-mask, mask;
+}
+
+/* faint base visibility so the room is barely sensed even in darkness */
+.intro-dark{
+    position:absolute;
+    inset:0;
+    background:url("assets/images/lab-bg.png") center/cover no-repeat;
+    opacity:.05;
+    filter:brightness(.4) saturate(.6) blur(1px);
+    pointer-events:none;
+}
+
+/* warm-cool flashlight glow that travels with the beam */
+.intro-flashlight{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(circle 165px at var(--bx) var(--by),
+        rgba(190,225,255,.22) 0%,
+        rgba(120,180,255,.10) 40%,
+        rgba(0,0,0,0) 72%);
+    mix-blend-mode:screen;
+    will-change:background;
+}
+
+.intro-hint{
+    position:absolute;
+    left:50%;
+    bottom:6%;
+    transform:translateX(-50%);
+    margin:0;
+    font-family:"Inter",sans-serif;
+    font-size:.85rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(190,220,255,.55);
+    text-shadow:0 0 12px rgba(0,180,255,.4);
+    pointer-events:none;
+    animation:introHintPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes introHintPulse{
+    0%,100%{opacity:.25;}
+    50%{opacity:.7;}
+}
+
+/* ---- Metallic ENTER button (hidden in the dark by default) ---- */
+.enter-btn{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) scale(.9);
+    width:118px;
+    height:42px;
+    border:1px solid rgba(180,200,220,.25);
+    border-radius:8px;
+    font-family:"Orbitron",sans-serif;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.22em;
+    color:rgba(220,235,255,.85);
+    cursor:pointer;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,0) 40%),
+        linear-gradient(160deg,#cfd8e3 0%,#8a97a8 22%,#5b6675 50%,#39414d 74%,#cdd6e2 100%);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.35),
+        inset 0 -2px 6px rgba(0,0,0,.55);
+    /* essentially invisible & unclickable until discovered */
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .9s ease, box-shadow .6s ease, transform .5s ease;
+    backdrop-filter:blur(2px);
+}
+
+.enter-label{
+    position:relative;
+    z-index:2;
+    background:linear-gradient(180deg,#ffffff,#aab6c6);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 1px 0 rgba(0,0,0,.25);
+}
+
+/* metallic shine sweep */
+.enter-shine{
+    position:absolute;
+    top:0;
+    left:-60%;
+    width:50%;
+    height:100%;
+    z-index:1;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);
+    transform:skewX(-20deg);
+    opacity:0;
+}
+
+/* discovered: glowing blue neon + clickable + shine sweep */
+.enter-btn.discovered{
+    opacity:1;
+    pointer-events:auto;
+    transform:translate(-50%,-50%) scale(1);
+    border-color:rgba(80,190,255,.7);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.4),
+        inset 0 -2px 6px rgba(0,0,0,.5),
+        0 0 18px rgba(40,170,255,.7),
+        0 0 46px rgba(40,140,255,.5);
+}
+
+.enter-btn.discovered .enter-shine{
+    animation:enterShine 2.4s ease-in-out infinite;
+}
+
+@keyframes enterShine{
+    0%{left:-60%;opacity:0;}
+    18%{opacity:.9;}
+    45%{left:120%;opacity:0;}
+    100%{left:120%;opacity:0;}
+}
+
+/* soft pool of light around the discovered button */
+.enter-btn.discovered::before{
+    content:"";
+    position:absolute;
+    inset:-34px;
+    z-index:-1;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(40,160,255,.28),transparent 70%);
+    pointer-events:none;
+}
+
+.enter-btn.discovered:hover{
+    transform:translate(-50%,-50%) scale(1.06);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.5),
+        inset 0 -2px 6px rgba(0,0,0,.5),
+        0 0 26px rgba(60,190,255,.9),
+        0 0 70px rgba(40,150,255,.65);
+}
+
+.enter-btn.discovered:active{
+    transform:translate(-50%,-50%) scale(.99);
+}
+
+/* cinematic exit: fade + camera push toward the workstation */
+.intro.intro-exit{
+    opacity:0;
+    transform:scale(1.18);
+    pointer-events:none;
+}
+
+@media (max-width:600px){
+    .enter-btn{width:104px;height:38px;font-size:.74rem;letter-spacing:.18em;border-radius:7px;}
+    .enter-btn.discovered::before{inset:-26px;}
+    .intro-hint{font-size:.72rem;bottom:8%;}
+    .intro-scene{
+        -webkit-mask:radial-gradient(circle 120px at var(--bx) var(--by),
+            rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 35%, rgba(0,0,0,.18) 70%, rgba(0,0,0,0) 100%);
+        mask:radial-gradient(circle 120px at var(--bx) var(--by),
+            rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 35%, rgba(0,0,0,.18) 70%, rgba(0,0,0,0) 100%);
+    }
+    .intro-flashlight{
+        background:radial-gradient(circle 120px at var(--bx) var(--by),
+            rgba(190,225,255,.22) 0%, rgba(120,180,255,.10) 40%, rgba(0,0,0,0) 72%);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    .intro{transition:opacity .5s ease;}
+    .enter-btn.discovered .enter-shine{animation-duration:3.5s;}
+    .intro-hint{animation:none;opacity:.5;}
 }
