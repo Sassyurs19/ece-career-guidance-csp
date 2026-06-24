@@ -1954,108 +1954,156 @@ body.intro-active{
     50%{opacity:.7;}
 }
 
-/* ---- Metallic ENTER button (hidden in the dark by default) ---- */
-.enter-btn{
+/* ---- Premium ECE Power Node (hidden in the dark until discovered) ---- */
+.power-node{
     position:absolute;
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) scale(.85);
-    width:54px;
-    height:54px;
-    border:1px solid rgba(180,200,220,.3);
-    border-radius:50%;
+    transform:translate(-50%,-50%) scale(.8);
+    width:132px;
+    height:132px;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:none;
+    border:0;
+    padding:0;
     cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 1s ease, transform .6s cubic-bezier(.2,.9,.25,1.2);
+    -webkit-tap-highlight-color:transparent;
+}
+
+/* PCB traces converging on the node */
+.pn-trace{
+    position:absolute;
+    background:linear-gradient(90deg,rgba(40,170,255,0),rgba(60,200,255,.85));
+    box-shadow:0 0 8px rgba(40,170,255,.6);
+    opacity:0;
+    transition:opacity .6s ease;
+}
+.pn-trace--t,.pn-trace--b{left:50%;width:2px;height:46px;transform:translateX(-50%);
+    background:linear-gradient(180deg,rgba(40,170,255,0),rgba(60,200,255,.85));}
+.pn-trace--l,.pn-trace--r{top:50%;height:2px;width:46px;transform:translateY(-50%);}
+.pn-trace--t{bottom:100%;} .pn-trace--b{top:100%;} .pn-trace--l{right:100%;} .pn-trace--r{left:100%;}
+/* solder-pad dot at the outer end of each trace */
+.pn-trace::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;
+    background:radial-gradient(circle,#bfe9ff,#2aa0ff 60%,transparent 75%);box-shadow:0 0 8px rgba(60,200,255,.9);}
+.pn-trace--t::after{top:-3px;left:50%;transform:translateX(-50%);}
+.pn-trace--b::after{bottom:-3px;left:50%;transform:translateX(-50%);}
+.pn-trace--l::after{left:-3px;top:50%;transform:translateY(-50%);}
+.pn-trace--r::after{right:-3px;top:50%;transform:translateY(-50%);}
+
+/* status LED above the chip */
+.pn-led{
+    position:absolute;
+    top:-22px;
+    left:50%;
+    transform:translateX(-50%);
+    width:9px;height:9px;border-radius:50%;
+    background:#5b2330;
+    box-shadow:inset 0 0 3px rgba(0,0,0,.6);
+    transition:background .5s ease, box-shadow .5s ease;
+}
+
+/* the chip / IC plate */
+.pn-plate{
+    position:relative;
+    width:84px;height:84px;
+    border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
     overflow:hidden;
     isolation:isolate;
     background:
-        radial-gradient(circle at 32% 28%,rgba(255,255,255,.18),rgba(255,255,255,0) 45%),
-        linear-gradient(160deg,#dfe6ef 0%,#9aa6b6 26%,#5b6675 56%,#363d49 80%,#cdd6e2 100%);
+        radial-gradient(circle at 30% 26%,rgba(255,255,255,.16),rgba(255,255,255,0) 46%),
+        linear-gradient(150deg,#2b3442 0%,#1b2330 40%,#10161f 70%,#222c3a 100%);
+    border:1px solid rgba(120,150,180,.35);
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.4),
-        inset 0 -3px 7px rgba(0,0,0,.55);
-    /* essentially invisible & unclickable until discovered */
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .9s ease, box-shadow .6s ease, transform .5s ease;
-    backdrop-filter:blur(2px);
+        inset 0 1px 1px rgba(255,255,255,.18),
+        inset 0 -6px 14px rgba(0,0,0,.6),
+        0 6px 18px rgba(0,0,0,.55);
+}
+/* engraved chip notch + grid texture */
+.pn-plate::before{
+    content:"";position:absolute;inset:8px;border-radius:12px;
+    background-image:
+        linear-gradient(rgba(90,130,170,.10) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(90,130,170,.10) 1px,transparent 1px);
+    background-size:11px 11px;
+    -webkit-mask:radial-gradient(circle at center,#000 60%,transparent 100%);
+    mask:radial-gradient(circle at center,#000 60%,transparent 100%);
 }
 
-.enter-icon{
-    position:relative;
-    z-index:2;
-    font-size:1.15rem;
-    color:rgba(225,238,255,.9);
-    text-shadow:0 1px 1px rgba(0,0,0,.4);
+.pn-symbol{
+    position:relative;z-index:2;
+    font-size:1.85rem;
+    color:rgba(150,180,210,.75);
+    text-shadow:0 1px 1px rgba(0,0,0,.5);
+    transition:color .5s ease, text-shadow .5s ease;
 }
 
 /* metallic shine sweep */
-.enter-shine{
-    position:absolute;
-    top:0;
-    left:-60%;
-    width:50%;
-    height:100%;
-    z-index:1;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);
-    transform:skewX(-20deg);
-    opacity:0;
+.pn-shine{
+    position:absolute;top:0;left:-70%;width:55%;height:100%;z-index:3;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg);opacity:0;
 }
 
-/* discovered: glowing blue neon + clickable + shine sweep */
-.enter-btn.discovered{
-    opacity:1;
-    pointer-events:auto;
+.pn-label{
+    position:absolute;
+    bottom:-26px;left:50%;transform:translateX(-50%);
+    font-family:"Orbitron",sans-serif;
+    font-size:.62rem;letter-spacing:.42em;
+    color:rgba(150,185,220,.55);
+    text-indent:.42em;
+    opacity:0;transition:opacity .6s ease, color .5s ease, text-shadow .5s ease;
+}
+
+/* DISCOVERED — node powers up: blue neon, live LED, traces energize */
+.power-node.discovered{
+    opacity:1;pointer-events:auto;
     transform:translate(-50%,-50%) scale(1);
+    animation:pnFloat 3.4s ease-in-out infinite;
+}
+.power-node.discovered .pn-trace{opacity:1;animation:pnPulse 1.8s ease-in-out infinite;}
+.power-node.discovered .pn-trace--b{animation-delay:.2s;}
+.power-node.discovered .pn-trace--l{animation-delay:.45s;}
+.power-node.discovered .pn-trace--r{animation-delay:.7s;}
+.power-node.discovered .pn-led{
+    background:#34ff9b;
+    box-shadow:0 0 8px rgba(52,255,155,.9),0 0 16px rgba(52,255,155,.6);
+    animation:pnLed 1.4s ease-in-out infinite;
+}
+.power-node.discovered .pn-plate{
     border-color:rgba(80,190,255,.7);
     box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.4),
-        inset 0 -2px 6px rgba(0,0,0,.5),
-        0 0 18px rgba(40,170,255,.7),
-        0 0 46px rgba(40,140,255,.5);
+        inset 0 1px 1px rgba(255,255,255,.25),
+        inset 0 -6px 14px rgba(0,0,0,.55),
+        0 0 22px rgba(40,170,255,.65),
+        0 0 60px rgba(40,140,255,.45);
 }
-
-.enter-btn.discovered .enter-shine{
-    animation:enterShine 2.4s ease-in-out infinite;
-}
-
-.enter-btn.discovered .enter-icon{
+.power-node.discovered .pn-symbol{
     color:#eaf6ff;
-    text-shadow:0 0 8px rgba(60,180,255,.95),0 0 18px rgba(40,150,255,.7);
+    text-shadow:0 0 10px rgba(60,180,255,.95),0 0 22px rgba(40,150,255,.7);
 }
+.power-node.discovered .pn-shine{animation:pnShine 2.6s ease-in-out infinite;}
+.power-node.discovered .pn-label{opacity:1;color:#bfe6ff;text-shadow:0 0 10px rgba(60,180,255,.7);}
 
-@keyframes enterShine{
-    0%{left:-60%;opacity:0;}
-    18%{opacity:.9;}
-    45%{left:120%;opacity:0;}
-    100%{left:120%;opacity:0;}
-}
-
-/* soft pool of light around the discovered button */
-.enter-btn.discovered::before{
-    content:"";
-    position:absolute;
-    inset:-34px;
-    z-index:-1;
-    border-radius:50%;
-    background:radial-gradient(circle,rgba(40,160,255,.28),transparent 70%);
+/* glow pool under the node */
+.power-node.discovered::before{
+    content:"";position:absolute;inset:-44px;z-index:-1;border-radius:50%;
+    background:radial-gradient(circle,rgba(40,160,255,.26),transparent 70%);
     pointer-events:none;
 }
+.power-node.discovered:hover{transform:translate(-50%,-50%) scale(1.07);}
+.power-node.discovered:active{transform:translate(-50%,-50%) scale(.97);}
 
-.enter-btn.discovered:hover{
-    transform:translate(-50%,-50%) scale(1.06);
-    box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.5),
-        inset 0 -2px 6px rgba(0,0,0,.5),
-        0 0 26px rgba(60,190,255,.9),
-        0 0 70px rgba(40,150,255,.65);
-}
+@keyframes pnFloat{0%,100%{margin-top:0;}50%{margin-top:-5px;}}
+@keyframes pnLed{0%,100%{opacity:1;}50%{opacity:.4;}}
+@keyframes pnPulse{0%,100%{opacity:.45;}50%{opacity:1;}}
+@keyframes pnShine{0%{left:-70%;opacity:0;}18%{opacity:.85;}45%{left:130%;opacity:0;}100%{left:130%;opacity:0;}}
 
-.enter-btn.discovered:active{
-    transform:translate(-50%,-50%) scale(.99);
-}
 
 /* cinematic exit: fade + camera push toward the workstation */
 .intro.intro-exit{
@@ -2065,9 +2113,9 @@ body.intro-active{
 }
 
 @media (max-width:600px){
-    .enter-btn{width:46px;height:46px;}
-    .enter-icon{font-size:1rem;}
-    .enter-btn.discovered::before{inset:-26px;}
+    .power-node{width:112px;height:112px;}
+    .pn-plate{width:72px;height:72px;}
+    .pn-symbol{font-size:1.55rem;}
     .intro-hint{font-size:.72rem;bottom:8%;}
     .intro-scene{
         -webkit-mask:radial-gradient(circle 120px at var(--bx) var(--by),
@@ -2083,6 +2131,9 @@ body.intro-active{
 
 @media (prefers-reduced-motion:reduce){
     .intro{transition:opacity .5s ease;}
-    .enter-btn.discovered .enter-shine{animation-duration:3.5s;}
+    .power-node.discovered,
+    .power-node.discovered .pn-trace,
+    .power-node.discovered .pn-led,
+    .power-node.discovered .pn-shine{animation:none;}
     .intro-hint{animation:none;opacity:.5;}
 }

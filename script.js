@@ -315,6 +315,10 @@ document.addEventListener("click", (e) => {
     document.body.classList.add("intro-active");
     document.documentElement.classList.add("intro-active");
 
+    const blockScroll = (e) => { if (document.body.classList.contains("intro-active")) e.preventDefault(); };
+    document.addEventListener("touchmove", blockScroll, { passive: false });
+    document.addEventListener("wheel", blockScroll, { passive: false });
+
     const reduceMotion =
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -355,7 +359,8 @@ document.addEventListener("click", (e) => {
         if (e.touches && e.touches[0]) {
             setTarget(e.touches[0].clientX, e.touches[0].clientY);
         }
-    }, { passive: true });
+        e.preventDefault();
+    }, { passive: false });
 
     let discovered = false;
     function checkDiscovery() {
